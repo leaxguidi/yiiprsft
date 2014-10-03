@@ -1,0 +1,823 @@
+2014/09/25 08:15:15 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(103): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/layouts/main.php(12): CModule->__get('bootstrap')
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#6 /Library/WebServer/Documents/yii/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#7 /Library/WebServer/Documents/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 /Library/WebServer/Documents/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(206): COutputProcessor->run()
+#10 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#11 /Library/WebServer/Documents/yii/proyectosoftware/protected/views/layouts/column1.php(6): CBaseController->endContent()
+#12 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#13 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#14 /Library/WebServer/Documents/yii/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#15 /Library/WebServer/Documents/yii/framework/web/actions/CViewAction.php(140): CController->render('pages/about')
+#16 /Library/WebServer/Documents/yii/framework/web/actions/CAction.php(76): CViewAction->run()
+#17 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#18 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#19 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#20 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#21 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#22 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#23 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/yii/proyectosoftware/site/page.html?view=about
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/index.html
+---
+2014/09/25 08:15:18 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/login.html
+---
+2014/09/25 08:21:22 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+---
+2014/09/25 08:21:31 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing directory or file.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:347
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+---
+2014/09/25 08:23:04 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(103): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/layouts/main.php(12): CModule->__get('bootstrap')
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#6 /Library/WebServer/Documents/yii/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#7 /Library/WebServer/Documents/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 /Library/WebServer/Documents/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(206): COutputProcessor->run()
+#10 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#11 /Library/WebServer/Documents/yii/proyectosoftware/protected/views/layouts/column1.php(6): CBaseController->endContent()
+#12 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#13 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#14 /Library/WebServer/Documents/yii/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#15 /Library/WebServer/Documents/yii/framework/web/actions/CViewAction.php(140): CController->render('pages/about')
+#16 /Library/WebServer/Documents/yii/framework/web/actions/CAction.php(76): CViewAction->run()
+#17 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#18 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#19 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#20 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#21 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#22 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#23 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/yii/proyectosoftware/site/page.html?view=about
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/index.html
+---
+2014/09/25 08:23:31 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.bootstrap" is not defined.' in /Library/WebServer/Documents/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/base/CModule.php(105): CComponent->__get('bootstrap')
+#1 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/layouts/main.php(12): CModule->__get('bootstrap')
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#3 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#4 /Library/WebServer/Documents/yii/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#5 /Library/WebServer/Documents/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#6 /Library/WebServer/Documents/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#7 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(206): COutputProcessor->run()
+#8 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#9 /Library/WebServer/Documents/yii/proyectosoftware/protected/views/layouts/column1.php(6): CBaseController->endContent()
+#10 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#11 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#13 /Library/WebServer/Documents/yii/framework/web/actions/CViewAction.php(140): CController->render('pages/about')
+#14 /Library/WebServer/Documents/yii/framework/web/actions/CAction.php(76): CViewAction->run()
+#15 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#16 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#17 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#18 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#19 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#20 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/yii/proyectosoftware/site/page.html?view=about
+---
+2014/09/25 08:24:04 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/login.html
+---
+2014/09/25 08:24:05 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+---
+2014/09/25 08:24:58 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+---
+2014/09/25 08:25:04 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/
+---
+2014/09/25 08:25:10 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/
+---
+2014/09/25 08:27:33 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(103): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/layouts/main.php(12): CModule->__get('bootstrap')
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#6 /Library/WebServer/Documents/yii/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#7 /Library/WebServer/Documents/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 /Library/WebServer/Documents/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(206): COutputProcessor->run()
+#10 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#11 /Library/WebServer/Documents/yii/proyectosoftware/protected/views/layouts/column1.php(6): CBaseController->endContent()
+#12 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#13 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#14 /Library/WebServer/Documents/yii/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#15 /Library/WebServer/Documents/yii/framework/web/actions/CViewAction.php(140): CController->render('pages/about')
+#16 /Library/WebServer/Documents/yii/framework/web/actions/CAction.php(76): CViewAction->run()
+#17 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CAction->runWithParams(Array)
+#18 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#19 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#20 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#21 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#22 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#23 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/yii/proyectosoftware/site/page.html?view=about
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/index.html
+---
+2014/09/25 08:27:35 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/login.html
+---
+2014/09/25 08:27:50 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/?r=gii
+---
+2014/09/25 08:28:28 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/
+---
+2014/09/25 15:31:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Library/WebServer/Documents/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Library/WebServer/Documents/yii/framework/base/CModule.php(103): CModule->getComponent('db')
+#4 /Library/WebServer/Documents/yii/framework/gii/generators/crud/CrudCode.php(44): CModule->__get('db')
+#5 /Library/WebServer/Documents/yii/framework/web/CFormModel.php(39): CrudCode->init()
+#6 /Library/WebServer/Documents/yii/framework/gii/CCodeGenerator.php(153): CFormModel->__construct()
+#7 /Library/WebServer/Documents/yii/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud/index')
+#14 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/yii/proyectosoftware/gii/crud/index.html
+HTTP_REFERER=http://localhost/yii/proyectosoftware/gii
+---
+2014/09/27 16:04:34 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbHeroUnit" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Library/WebServer/Documents/yii/proyectosoftware/themes/bootstrap/views/site/index.php(9): CBaseController->beginWidget('bootstrap.widge...', Array)
+#4 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', NULL, true)
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', NULL, true)
+#7 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/SiteController.php(32): CController->render('index')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#15 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+---
+2014/09/27 16:09:11 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/site/index.html
+---
+2014/09/27 16:09:13 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/site/page.html?view=about
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/index.html
+---
+2014/09/27 16:09:15 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/site/login.html
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/contact.html
+---
+2014/09/27 16:09:16 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/site/contact.html
+HTTP_REFERER=http://localhost/yii/proyectosoftware/site/page.html?view=about
+---
+2014/09/27 16:09:20 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/
+---
+2014/09/27 16:12:54 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/
+---
+2014/09/27 16:13:10 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/
+---
+2014/09/27 16:13:13 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/
+---
+2014/09/27 16:13:23 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/
+---
+2014/09/27 16:13:29 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Library/WebServer/Documents/yii/framework/YiiBase.php:322
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
+#1 /Library/WebServer/Documents/yii/framework/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(523): CModule->getComponent('bootstrap')
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(163): CModule->preloadComponents()
+#4 /Library/WebServer/Documents/yii/framework/YiiBase.php(125): CApplication->__construct('/Library/WebSer...')
+#5 /Library/WebServer/Documents/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/Library/WebSer...')
+#6 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): YiiBase::createWebApplication('/Library/WebSer...')
+#7 {main}
+REQUEST_URI=/yii/proyectosoftware/site/page.html?view=about
+---
+2014/09/27 16:17:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Library/WebServer/Documents/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Library/WebServer/Documents/yii/framework/base/CModule.php(103): CModule->getComponent('db')
+#4 /Library/WebServer/Documents/yii/framework/gii/generators/crud/CrudCode.php(44): CModule->__get('db')
+#5 /Library/WebServer/Documents/yii/framework/web/CFormModel.php(39): CrudCode->init()
+#6 /Library/WebServer/Documents/yii/framework/gii/CCodeGenerator.php(153): CFormModel->__construct()
+#7 /Library/WebServer/Documents/yii/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#13 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/bootstrap/i...')
+#14 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/yii/proyectosoftware/gii/bootstrap/index.html
+HTTP_REFERER=http://localhost/yii/proyectosoftware/gii
+---
+2014/10/02 15:24:49 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:24:49 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:24:49 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:24:49 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:24:49 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:34 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:34 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:34 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:34 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:34 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:35 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:35 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:35 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:35 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:35 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:42 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:42 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:42 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:42 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:42 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:43 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:43 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:43 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:43 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:43 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:46 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:46 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:46 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:46 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:27:46 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:00 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:00 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:00 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:00 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:00 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:01 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:01 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:01 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:01 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:01 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:03 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:03 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:03 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:03 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:03 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:05 [warning] [application] Failed to set unsafe attribute "account_verification_code" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:05 [warning] [application] Failed to set unsafe attribute "active" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:05 [warning] [application] Failed to set unsafe attribute "fecha_alta" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:05 [warning] [application] Failed to set unsafe attribute "fecha_ultimo_login" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:28:05 [warning] [application] Failed to set unsafe attribute "user_type" of "Usuarios".
+in /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php (71)
+in /Library/WebServer/Documents/yii/proyectosoftware/index.php (13)
+2014/10/02 15:35:24 [error] [exception.CException] exception 'CException' with message 'UsuariosController cannot find the requested view "index".' in /Library/WebServer/Documents/yii/framework/web/CController.php:878
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#1 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php(133): CController->render('index', Array)
+#2 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): UsuariosController->actionIndex()
+#3 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /Library/WebServer/Documents/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /Library/WebServer/Documents/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /Library/WebServer/Documents/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /Library/WebServer/Documents/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /Library/WebServer/Documents/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /Library/WebServer/Documents/yii/framework/web/CController.php(291): CFilterChain->run()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('')
+#12 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('usuarios')
+#13 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/yii/proyectosoftware/usuarios
+---
+2014/10/02 15:42:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "protected/views/usuarios/create".' in /Library/WebServer/Documents/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('protected/views...')
+#1 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/yii/proyectosoftware/index.php?r=protected/views/usuarios/create
+HTTP_REFERER=http://127.0.0.1/yii/proyectosoftware/
+---
+2014/10/02 15:43:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "protected/views/usuarios/admin".' in /Library/WebServer/Documents/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('protected/views...')
+#1 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/yii/proyectosoftware/index.php?r=protected/views/usuarios/admin
+HTTP_REFERER=http://127.0.0.1/yii/proyectosoftware/index.php?r=usuarios/admin
+---
+2014/10/02 20:48:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Library/WebServer/Documents/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(2361): CActiveRecord->getDbConnection()
+#6 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Usuarios))
+#7 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(79): CActiveRecord->getMetaData()
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php(141): CActiveRecord->__construct('search')
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): UsuariosController->actionAdmin()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Library/WebServer/Documents/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Library/WebServer/Documents/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Library/WebServer/Documents/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Library/WebServer/Documents/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('admin')
+#19 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('usuarios/admin')
+#20 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/yii/proyectosoftware/index.php?r=usuarios/admin
+HTTP_REFERER=http://127.0.0.1/yii/proyectosoftware/index.php?r=site/index
+---
+2014/10/02 20:48:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Library/WebServer/Documents/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(2361): CActiveRecord->getDbConnection()
+#6 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Usuarios))
+#7 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(79): CActiveRecord->getMetaData()
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php(64): CActiveRecord->__construct()
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): UsuariosController->actionCreate()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Library/WebServer/Documents/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Library/WebServer/Documents/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Library/WebServer/Documents/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Library/WebServer/Documents/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#19 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('usuarios/create')
+#20 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/yii/proyectosoftware/index.php?r=usuarios/create
+HTTP_REFERER=http://127.0.0.1/yii/proyectosoftware/index.php?r=site/login
+---
+2014/10/02 21:05:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Library/WebServer/Documents/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Library/WebServer/Documents/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Library/WebServer/Documents/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Library/WebServer/Documents/yii/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(2361): CActiveRecord->getDbConnection()
+#6 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Usuarios))
+#7 /Library/WebServer/Documents/yii/framework/db/ar/CActiveRecord.php(79): CActiveRecord->getMetaData()
+#8 /Library/WebServer/Documents/yii/proyectosoftware/protected/controllers/UsuariosController.php(64): CActiveRecord->__construct()
+#9 /Library/WebServer/Documents/yii/framework/web/actions/CInlineAction.php(49): UsuariosController->actionCreate()
+#10 /Library/WebServer/Documents/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Library/WebServer/Documents/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Library/WebServer/Documents/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Library/WebServer/Documents/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Library/WebServer/Documents/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /Library/WebServer/Documents/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#19 /Library/WebServer/Documents/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('usuarios/create')
+#20 /Library/WebServer/Documents/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /Library/WebServer/Documents/yii/proyectosoftware/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/yii/proyectosoftware/index.php?r=usuarios/create
+HTTP_REFERER=http://127.0.0.1/yii/proyectosoftware/index.php?r=site/login
+---
