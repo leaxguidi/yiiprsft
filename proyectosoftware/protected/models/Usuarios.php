@@ -22,6 +22,11 @@
  */
 class Usuarios extends CActiveRecord
 {
+	public $username;
+	public $repeat_email;
+	public $captcha_code;
+	public $longitud = 1234.1234123;
+		
 	/**
 	 * @return string the associated database table name
 	 */
@@ -38,15 +43,79 @@ class Usuarios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('dni, username, street, street_number, sexo, password, email, account_verification_code, latitud, longitud', 'required'),
-			array('street_number, active', 'numerical', 'integerOnly'=>true),
-			array('latitud, longitud', 'numerical'),
-			array('dni, password, email, account_verification_code', 'length', 'max'=>64),
-			array('username, street', 'length', 'max'=>32),
-			array('fecha_alta, fecha_ultimo_login, user_type', 'safe'),
+			array('dni, username, street, street_number, sexo, password, email, repeat_email', 'required'),
+
+			array('dni', 'length', 'min'=>7, 'max'=>8),
+			array('username', 'length', 'min'=>4, 'max'=>16),
+			array('street', 'length', 'min'=>10, 'max'=>128),
+			array('street_number', 'length', 'max'=>6),
+			array('password', 'length', 'min'=>6, 'max'=>20),
+			array('email', 'length', 'min'=>10, 'max'=>64),
+			array(
+				'captcha_code',
+				'CaptchaExtendedValidator',
+				'allowEmpty'=>!CCaptcha::checkRequirements()
+				),
+			array(
+				'dni',
+				'match',
+				'pattern'=>'/^[0-9]+$/i',
+				'message'=>'Solo se permiten números.',
+				),
+			array(
+				'username',
+				'match',
+				'pattern'=>'/^[a-zàèìòùáéíóúñ ]+$/i',
+				'message'=>'Solo se permiten letras y espacios.',
+				),
+			array(
+				'email',
+				'email',
+				'message'=>'El formato del Email no es válido.',
+				),
+			array(
+				'repeat_email',
+				'compare',
+				'compareAttribute'=>'email',
+				'message'=>'Las direcciones de Email no coiciden .',
+				),							
+			array(
+				'password',
+				'match',
+				'pattern'=>'/^[a-z0-9ñ\_]+$/i',
+				'message'=>'Solo se permiten letras y números.',
+				),
+			//~ array(
+				//~ 'street',
+				//~ 'match',
+				//~ 'pattern'=>'/^[a-z0-9àèìòùáéíóúñ ]+$/i',
+				//~ 'message'=>'Solo se permiten letras, números y espacios.',
+				//~ ),
+			array(
+				'street_number',
+				'match',
+				'pattern'=>'/^[0-9]+$/i',
+				'message'=>'Solo se permiten números.',
+				),
+			//~ array(
+				//~ 'dni',
+				//~ 'validate_dni',
+				//~ ),
+			//~ array(
+				//~ 'email',
+				//~ 'validate_email',
+				//~ 'message'=>'Email no puede .'
+				//~ ),
+			array(
+				'sexo',
+				'validate_sexo',
+				),			
+			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, dni, username, street, street_number, sexo, password, email, account_verification_code, active, fecha_alta, fecha_ultimo_login, user_type, latitud, longitud', 'safe', 'on'=>'search'),
+		
+		
 		);
 	}
 
@@ -67,21 +136,16 @@ class Usuarios extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'dni' => 'Dni',
-			'username' => 'Username',
-			'street' => 'Street',
-			'street_number' => 'Street Number',
-			'sexo' => 'Sexo',
-			'password' => 'Password',
+			'dni' => 'DNI',
+			'username' => 'Nombre y Apellido',
 			'email' => 'Email',
-			'account_verification_code' => 'Account Verification Code',
-			'active' => 'Active',
-			'fecha_alta' => 'Fecha Alta',
-			'fecha_ultimo_login' => 'Fecha Ultimo Login',
-			'user_type' => 'User Type',
-			'latitud' => 'Latitud',
-			'longitud' => 'Longitud',
+			'repeat_email'=>'Repetir Email',
+			'password'=>'Contraseña',
+			'street'=>'Dirección',
+			'street_number'=>'Número',
+			'sexo'=>'Sexo',
+			'conditions'=>'Acepto los términos y condiciones',
+			'captcha_code'=>'Captcha',			
 		);
 	}
 
@@ -123,6 +187,24 @@ class Usuarios extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+
+	/**
+	 * se comprueba si el SEXO es seleccionado
+	 */
+	public function validate_sexo() {
+		if($this->sexo === 'vacio')
+			$this->addError('sexo','Por favor, indica tu sexo.');	
+	}
+	
+	/**
+	 * @return array 
+	 */	
+	public function get_opctions_sexo(){
+		return array('vacio' => 'Indica tu sexo', 'Hombre' => 'Hombre', 'Mujer' => 'Mujer', 'Otro' => 'Otro');	
+	}	
+
+
 
 	/**
 	 * Returns the static model of the specified AR class.

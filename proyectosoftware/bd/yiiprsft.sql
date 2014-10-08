@@ -26,7 +26,7 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dni` varchar(64) NOT NULL,
   `username` varchar(32) NOT NULL COMMENT 'Nombre y Apellido',
-  `street` varchar(32) NOT NULL COMMENT 'Dirección',
+  `street` varchar(128) NOT NULL COMMENT 'Dirección',
   `street_number` int(8) NOT NULL,
   `sexo` set('Hombre','Mujer','Otro') NOT NULL,
   `password` varchar(64) NOT NULL COMMENT 'Contraseña',

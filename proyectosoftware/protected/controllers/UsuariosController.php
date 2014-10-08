@@ -17,6 +17,16 @@ class UsuariosController extends Controller
 			'accessControl', // perform access control for CRUD operations
 		);
 	}
+	public function actions()
+	{
+		return array(
+            'captcha'=>array(
+                'class'=>'CaptchaExtendedAction',
+                // if needed, modify settings
+                'mode'=>CaptchaExtendedAction::MODE_MATH,
+            ),
+        );
+	}
 
 	/**
 	 * Specifies the access control rules.
@@ -26,6 +36,10 @@ class UsuariosController extends Controller
 	public function accessRules()
 	{
 		return array(
+			array('allow',
+				'actions'=>array('RegistroUsuario','captcha'),
+				'expression'=>'Yii::app()->user->isGuest;'
+			),		
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','create'),
 				'users'=>array('*'),
@@ -64,7 +78,7 @@ class UsuariosController extends Controller
 		$model=new Usuarios;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Usuarios']))
 		{
@@ -73,9 +87,7 @@ class UsuariosController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		$this->render('create',array('model'=>$model));
 	}
 
 	/**
