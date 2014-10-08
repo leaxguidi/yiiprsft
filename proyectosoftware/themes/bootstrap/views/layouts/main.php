@@ -23,6 +23,7 @@
                 array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Registro', 'url'=>array('/usuarios/create'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Usuarios', 'url'=>array('/usuarios/admin'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Zonas', 'url'=>array('/zonas/admin'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
             ),
         ),
