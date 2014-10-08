@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Zonases'=>array('index'),
+	'Zonas'=>array('index'),
 	$model->name=>array('view','id'=>$model->zoneid),
 	'Update',
 );

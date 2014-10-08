@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Zonases',
+	'Zonas',
 );
 
 $this->menu=array(
@@ -9,7 +9,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Zonases</h1>
+<h1>Zonas</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

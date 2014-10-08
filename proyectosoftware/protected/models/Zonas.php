@@ -31,12 +31,12 @@ class Zonas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, description, employees, lati, lngi, latf, lngf', 'required'),
+			array('name, employees, lati, lngi, latf, lngf', 'required'),
 			array('employees', 'numerical', 'integerOnly'=>true),
 			array('name, description, lati, lngi, latf, lngf', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('zoneid, name, description, employees, lati, lngi, latf, lngf', 'safe', 'on'=>'search'),
+			array('zoneid, name, description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,14 +57,14 @@ class Zonas extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'zoneid' => 'Zoneid',
-			'name' => 'Name',
-			'description' => 'Description',
-			'employees' => 'Employees',
-			'lati' => 'Lati',
-			'lngi' => 'Lngi',
-			'latf' => 'Latf',
-			'lngf' => 'Lngf',
+			'zoneid' => 'ZonaID',
+			'name' => 'Nombre',
+			'description' => 'Descripcion',
+			'employees' => 'Cantidad Empleados',
+			'lati' => 'Latitud Inicial',
+			'lngi' => 'Longitud Inicial',
+			'latf' => 'Latitud Final',
+			'lngf' => 'Longitud Final',
 		);
 	}
 
@@ -109,5 +109,6 @@ class Zonas extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+		//return 'Zonas';
 	}
 }
