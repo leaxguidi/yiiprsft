@@ -45,10 +45,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'zoneid',
 		'name',
 		'description',
+		/*
 		'employees',
 		'lati',
 		'lngi',
-		/*
 		'latf',
 		'lngf',
 		*/
