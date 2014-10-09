@@ -26,7 +26,7 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dni` varchar(64) NOT NULL,
   `username` varchar(32) NOT NULL COMMENT 'Nombre y Apellido',
-  `street` varchar(32) NOT NULL COMMENT 'Dirección',
+  `street` varchar(255) NOT NULL COMMENT 'Dirección',
   `street_number` int(8) NOT NULL,
   `sexo` set('Hombre','Mujer','Otro') NOT NULL,
   `password` varchar(64) NOT NULL COMMENT 'Contraseña',
@@ -39,7 +39,7 @@ CREATE TABLE `usuarios` (
   `latitud` double NOT NULL,
   `longitud` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +49,36 @@ CREATE TABLE `usuarios` (
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `zonas`
+--
+
+DROP TABLE IF EXISTS `zonas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `zonas` (
+  `zoneid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `employees` int(11) NOT NULL,
+  `lati` varchar(255) NOT NULL,
+  `lngi` varchar(255) NOT NULL,
+  `latf` varchar(255) NOT NULL,
+  `lngf` varchar(255) NOT NULL,
+  PRIMARY KEY (`zoneid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `zonas`
+--
+
+LOCK TABLES `zonas` WRITE;
+/*!40000 ALTER TABLE `zonas` DISABLE KEYS */;
+INSERT INTO `zonas` VALUES (4,'Zona 1','',4,'-34.769978288191965','-58.241208862304745','-34.75320610174444','-58.18283764648436'),(5,'Zona 2','',5,'-34.80606918722662','-58.298200439453126','-34.78704866005512','-58.25150219726561');
+/*!40000 ALTER TABLE `zonas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -60,4 +90,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-03 12:54:10
+-- Dump completed on 2014-10-09 15:48:56

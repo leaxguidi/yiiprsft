@@ -10,7 +10,9 @@
 
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'zonas-form',
+	'type'=>'horizontal',
 	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
 )); ?>
     
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
@@ -23,15 +25,15 @@
 
 	<?php echo $form->textFieldRow($model,'employees',array('class'=>'span5')); ?>
 
-	<?php echo $form->textFieldRow($model,'lati',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'lati',array('class'=>'span5','maxlength'=>255,'readonly'=>'false')); ?>
 
-	<?php echo $form->textFieldRow($model,'lngi',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'lngi',array('class'=>'span5','maxlength'=>255,'readonly'=>'false')); ?>
 
-	<?php echo $form->textFieldRow($model,'latf',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'latf',array('class'=>'span5','maxlength'=>255,'readonly'=>'false')); ?>
 
-	<?php echo $form->textFieldRow($model,'lngf',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'lngf',array('class'=>'span5','maxlength'=>255,'readonly'=>'false')); ?>
 	
-	
+	<div id="map-canvas"></div>
 	
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -40,30 +42,51 @@
 			'label'=>$model->isNewRecord ? 'Create' : 'Save',
 		)); ?>
 	</div>
-	<div id="map-canvas"></div>
+	
     <script>
-		// This example adds a user-editable rectangle to the map.
-		// When the user changes the bounds of the rectangle,
-		// an info window pops up displaying the new bounds.
-		
 		var rectangle;
 		var map;
 		var infoWindow;
 		
-		function initialize() {
+		var lati = document.getElementById('Zonas_lati').value;
+		var lngi = document.getElementById('Zonas_lngi').value;
+		var latf = document.getElementById('Zonas_latf').value;
+		var lngf = document.getElementById('Zonas_lngf').value; 
+		
+		lati = (lati != "") ? parseFloat(lati) : -34.822417675522324;
+	  	lngi = (lngi != "") ? parseFloat(lngi) : -58.311933349609376;
+	  	latf = (latf != "") ? parseFloat(latf) : -34.76674479036495;
+	  	lngf = (lngf != "") ? parseFloat(lngf) : -58.24051586914061;
+		
+		function initialize() {		  
+		  //console.log('Input',lati,lngi,latf,lngf);
+		  
+		  var latProm = parseFloat((latf + lati)/2);
+		  var lngProm = parseFloat((lngf + lngi)/2);
+		  //Promedios
+		  latProm = (latProm != 0) ? latProm : -34.76674479036495;
+		  lngProm = (lngProm != 0) ? lngProm : -58.311933349609376;
+		  //console.log(latProm,lngProm)
+		  //Valores en update
+		  lati = (lati != 0) ? lati : -34.822417675522324;
+		  lngi = (lngi != 0) ? lngi : -58.311933349609376;
+		  latf = (latf != 0) ? latf : -34.76674479036495;
+		  lngf = (lngf != 0) ? lngf : -58.24051586914061;
+		  console.log(lati,lngi,latf,lngf)
+		  //console.log('Condicion',(lati=0),(lngi=0),(latf=0),(lngf=0));
+		  //console.log('Pasofuncion',lati,lngi,latf,lngf);
 		  var mapOptions = {
-		    center: new google.maps.LatLng(-34.76674479036495, -58.311933349609376),
+		    center: new google.maps.LatLng(latProm, lngProm),
 		    zoom: 11
 		  };
 		  map = new google.maps.Map(document.getElementById('map-canvas'),
 		      mapOptions);
 		
 		  var bounds = new google.maps.LatLngBounds(
-		      new google.maps.LatLng(-34.822417675522324, -58.311933349609376),
-		      new google.maps.LatLng(-34.76674479036495, -58.24051586914061)
+		      new google.maps.LatLng(lati, lngi),
+		      new google.maps.LatLng(latf, lngf)
 		  );
 		
-		  // Define the rectangle and set its editable property to true.
 		  rectangle = new google.maps.Rectangle({
 		    bounds: bounds,
 		    editable: true,
@@ -71,31 +94,17 @@
 		  });
 		
 		  rectangle.setMap(map);			
-		  // Add an event listener on the rectangle.
 		  google.maps.event.addListener(rectangle, 'bounds_changed', showNewRect);			
-		  // Define an info window on the map.
-		  //infoWindow = new google.maps.InfoWindow();
 		}
-		// Show the new coordinates for the rectangle in an info window.
 		
-		/** @this {google.maps.Rectangle} */
 		function showNewRect(event) {
 		  var ne = rectangle.getBounds().getNorthEast();
 		  var sw = rectangle.getBounds().getSouthWest();
 		
-		  var contentString = '<b>Rectangle moved.</b><br>' +
-		      'New north-east corner: ' + ne.lat() + ', ' + ne.lng() + '<br>' +
-		      'New south-west corner: ' + sw.lat() + ', ' + sw.lng();
-		
-		  // Set the info window's content and position.
-		  infoWindow.setContent(contentString);
-		  infoWindow.setPosition(ne);
-		
-		  infoWindow.open(map);
-		  document.getElementById('Zonas_lati').value = ne.lat();
-		  document.getElementById('Zonas_lngi').value = ne.lng();
-		  document.getElementById('Zonas_latf').value = sw.lat();
-		  document.getElementById('Zonas_lngf').value = sw.lng();
+		  document.getElementById('Zonas_latf').value = ne.lat();
+		  document.getElementById('Zonas_lngf').value = ne.lng();
+		  document.getElementById('Zonas_lati').value = sw.lat();
+		  document.getElementById('Zonas_lngi').value = sw.lng();
 		}
 		
 		google.maps.event.addDomListener(window, 'load', initialize);
