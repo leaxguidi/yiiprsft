@@ -66,7 +66,6 @@ return array(
 		),
 		// uncomment the following to use a MySQL database
 		*/
-<<<<<<< HEAD
 		'db'=>array(
 			'connectionString' => 'mysql:host=mysql.hostinger.com.ar;dbname=u756927963_mysql',
 			'emulatePrepare' => true,
@@ -75,16 +74,6 @@ return array(
 			'charset' => 'utf8',
 		),
 		/*
-=======
-		//~ 'db'=>array(
-			//~ 'connectionString' => 'mysql:host=mysql.hostinger.com.ar;dbname=u756927963_mysql',
-			//~ 'emulatePrepare' => true,
-			//~ 'username' => 'u756927963_unaj',
-			//~ 'password' => 'ps@2014--UNAJ',
-			//~ 'charset' => 'utf8',
-		//~ ),
-			
->>>>>>> eb655665b17915fd186e9aff1ad424b8945879ad
 		'db'=>array(
 			'connectionString' => 'mysql:host=127.0.0.1;dbname=yiiprsft',
 			'emulatePrepare' => true,
@@ -92,6 +81,7 @@ return array(
 			'password' => '1234',
 			'charset' => 'utf8',
 		),
+		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
