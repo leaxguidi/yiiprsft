@@ -5,7 +5,7 @@ Yii::import('application.extensions.phpmailer.JPhpMailer');
 /**
  * 
  */
-Class ssss {
+Class EnviadorDeMails {
 		
 		public function __construct($subject,$message){
 			$mail = new JPhpMailer;
@@ -46,36 +46,14 @@ Class ssss {
 class Email {
 	
 	public static function enviar($to, $subject, $message) {
-		$ss = new ssss($subject, $message);
-		//Definimos el remitente (dirección y, opcionalmente, nombre)		
-		$ss->enviar('contacto@unaj-informatica.com.ar', 'UNAJ - Proyecto de Software', $to, 'usuario');		
+		EnviadorDeMails($subject, $message)->enviar('contacto@unaj-informatica.com.ar', 'UNAJ - Proyecto de Software', $to, 'usuario');
 	}
 	
 	
 	public static function recibir_contacto($to, $name, $subject, $message) {
-		$ss = new ssss($subject, $message);
-		//Definimos el remitente (dirección y, opcionalmente, nombre)		
-		$ss->enviar($to, $name.' ('.$to.')', $to, 'usuario', 'contacto@unaj-informatica.com.ar', '');
+		EnviadorDeMails($subject, $message)->enviar($to, $name.' ('.$to.')', $to, 'usuario', 'contacto@unaj-informatica.com.ar', '');
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
