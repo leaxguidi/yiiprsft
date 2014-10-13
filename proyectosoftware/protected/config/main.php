@@ -65,15 +65,15 @@ return array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
 		// uncomment the following to use a MySQL database
-		
+		*/
 		'db'=>array(
-			'connectionString' => 'mysql:host=mysql.hostinger.com.ar;dbname=u756927963_mysql',
+			'connectionString' => 'mysql:host=db4free.net;dbname=medicos',
 			'emulatePrepare' => true,
-			'username' => 'u756927963_unaj',
-			'password' => 'ps@2014--UNAJ',
+			'username' => 'proyecto2014',
+			'password' => 'Unaj2014',
 			'charset' => 'utf8',
 		),
-		*/
+		/*
 		'db'=>array(
 			'connectionString' => 'mysql:host=127.0.0.1;dbname=yiiprsft',
 			'emulatePrepare' => true,
@@ -81,7 +81,7 @@ return array(
 			'password' => '1234',
 			'charset' => 'utf8',
 		),
-		
+		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
