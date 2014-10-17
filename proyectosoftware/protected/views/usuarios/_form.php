@@ -11,6 +11,9 @@
 	<?php echo $form->errorSummary($model); ?>
 	<?php echo $form->textFieldRow($model,'dni',array('class'=>'span2','placeholder'=>'12345678')); ?>
 	<?php echo $form->textFieldRow($model,'username',array('class'=>'span3','placeholder'=>'Nombre Apellido')); ?>
+	
+	<input type="hidden" name="Usuarios[latitud]" id="Usuarios_latitud">
+	<input type="hidden" name="Usuarios[longitud]" id="Usuarios_longitud">	
 
 	<div class="control-group">
 		<label class="control-label required" for="Usuarios_street">
@@ -23,37 +26,27 @@
 			value="<?php echo (isset($direc)) ? $direc : '' ;  ?>" >
 		</div>		
 	</div>
-	
-	<input type="hidden" name="latitud_str" id="Usuarios_latitud">
-	<input type="hidden" name="longitud_str" id="Usuarios_longitud">	
-	
-	<!--	número de calle (código html)	-->
-	<!--
-		<div class="control-group ">
-			<label class="control-label required" for="Usuarios_street_number">
-				Número 
-			<span class="required">*</span>
-			</label>
-			<div class="controls">
-				<input class="span1" placeholder="1234" name="Usuarios[street_number]" id="Usuarios_street_number" type="text" maxlength="6" />
-				<span class="help-inline error" id="Usuarios_street_number_em_" style="display: none"></span>
-			</div>
-		</div>
-	-->
 
 	<?php echo $form->textFieldRow($model,'street_number',array('class'=>'span3','placeholder'=>'Número de casa')); ?>
 	<?php echo $form->dropDownListRow($model, 'sexo', $model->get_opctions_sexo()); ?>
-	<?php echo $form->textFieldRow($model,'email',array(
-				'class'=>'span4',
-				'placeholder'=>'Correo electrónico',
-				'hint'=>'<font size="2" color="#3DB53D">Te enviaremos un correo para confirmar tu registro.</font>')); ?>
+	<?php echo $form->textFieldRow($model,'email',array('class'=>'span4','placeholder'=>'Correo electrónico')); ?>
 				
 	<?php echo $form->textFieldRow($model,'repeat_email',array('class'=>'span4','placeholder'=>'Repite el correo electrónico')); ?>
 	<?php echo $form->passwordFieldRow($model,'password',array('class'=>'span3','placeholder'=>'Crea una contraseña')); ?>
 
-	<?php if(CCaptcha::checkRequirements()): ?>
-		<?php echo $form->captchaRow($model,'captcha_code', array('class'=>'span2','placeholder'=>'Ingresa el resultado')); ?>
-	<?php endif; ?>		
+	<!----------  campos visibles solo para el admin  -------------------------------------------------->
+	<?php if(Yii::app()->user->name === 'admin'): ?>
+		<?php echo $form->textFieldRow($model,'active',array('class'=>'span5')); ?>
+		<?php echo $form->textFieldRow($model,'fecha_alta',array('class'=>'span5')); ?>
+		<?php echo $form->textFieldRow($model,'user_type',array('class'=>'span5','maxlength'=>0)); ?>
+	<?php endif; ?>
+	<!-------------------------------------------------------------------------------------------------->
+
+	<?php if(Yii::app()->user->isGuest): ?>
+		<?php if(CCaptcha::checkRequirements()): ?>
+			<?php echo $form->captchaRow($model,'captcha_code', array('class'=>'span2','placeholder'=>'Ingresa el resultado')); ?>
+		<?php endif; ?>	
+	<?php endif; ?>	
 	
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -69,7 +62,6 @@
 <!--======================  CÓDIGO js PARA AUTOCOMPLETAR EL CAMPO DIRECCIÓN  =============================-->
 <!--======================================================================================================-->
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
-<script src="js/jquery-1.8.2.min.js"></script>
     <script>
 	function initialize() {
     	var input = document.getElementById('Usuarios_street');
@@ -78,8 +70,8 @@
 			var place = autocomplete.getPlace();
 			document.getElementById('Usuarios_latitud').value = place.geometry.location.lat();
 			document.getElementById('Usuarios_longitud').value = place.geometry.location.lng();
-			//~ alert(place.geometry.location.lat());
-			//~ alert(place.geometry.location.lng());
+			console.log(place.geometry.location.lat());
+			console.log(place.geometry.location.lng());
 		});
   	}
     

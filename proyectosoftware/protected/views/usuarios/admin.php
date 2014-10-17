@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Usuarioses'=>array('index'),
+	'Usuarios'=>array('index'),
 	'Manage',
 );
 
@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Usuarioses</h1>
+<h1>Manage Usuarios</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -48,7 +48,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'street',
 		'street_number',
 		'sexo',
-		/*
 		'password',
 		'email',
 		'account_verification_code',
@@ -58,7 +57,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'user_type',
 		'latitud',
 		'longitud',
-		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),
