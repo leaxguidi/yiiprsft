@@ -22,7 +22,7 @@
 		</label>
 		<div class="controls">
 			<input class="span5" placeholder="Avenida Rivadavia, Quilmes, Buenos Aires, Argentina." 
-			name="Usuarios[street]" id="Usuarios_street" type="text" 
+			name="Usuarios[street]" id="Usuarios_street" type="text" onkeypress="return pulsar(event)"
 			value="<?php echo (isset($direc)) ? $direc : '' ;  ?>" >
 		</div>		
 	</div>
@@ -62,21 +62,26 @@
 <!--======================  CÓDIGO js PARA AUTOCOMPLETAR EL CAMPO DIRECCIÓN  =============================-->
 <!--======================================================================================================-->
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
-    <script>
-	function initialize() {
-    	var input = document.getElementById('Usuarios_street');
-    	var autocomplete = new google.maps.places.Autocomplete(input);
-    	google.maps.event.addListener(autocomplete, 'place_changed', function () {
-			var place = autocomplete.getPlace();
-			document.getElementById('Usuarios_latitud').value = place.geometry.location.lat();
-			document.getElementById('Usuarios_longitud').value = place.geometry.location.lng();
-			console.log(place.geometry.location.lat());
-			console.log(place.geometry.location.lng());
-		});
-  	}
-    
-    $(document).on('ready', function(){
-		google.maps.event.addDomListener(window, 'load', initialize);
-    });
+<script>
+function initialize() {
+	var input = document.getElementById('Usuarios_street');
+	var autocomplete = new google.maps.places.Autocomplete(input);
+	google.maps.event.addListener(autocomplete, 'place_changed', function () {
+		var place = autocomplete.getPlace();
+		document.getElementById('Usuarios_latitud').value = place.geometry.location.lat();
+		document.getElementById('Usuarios_longitud').value = place.geometry.location.lng();
+		console.log(place.geometry.location.lat());
+		console.log(place.geometry.location.lng());
+	});
+}
+
+$(document).on('ready', function(){
+	google.maps.event.addDomListener(window, 'load', initialize);
+});
+
+function pulsar(e) { 
+  tecla = (document.all) ? e.keyCode :e.which; 
+  return (tecla!=13); 
+} 
 </script>
 <!--======================================================================================================-->
