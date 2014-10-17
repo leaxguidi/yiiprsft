@@ -179,5 +179,17 @@ class PasswordRecovery extends CActiveRecord
 		
 	}	
 
+	/**
+	 * se devuelve true si la cuenta de usuario esta activada  
+	 */
+	public function isUserActive($id)
+	{
+		if (Usuarios::model()->findByPk($id)->active == 1)
+			return true;
+		else
+			return false;
+		
+	}	
+
 
 }

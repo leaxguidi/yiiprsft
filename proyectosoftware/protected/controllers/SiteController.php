@@ -119,22 +119,30 @@ class SiteController extends Controller
 			
 			$id = $model->getIdByEmail($model->email);
 			if ($id) {
+				if ($model->isUserActive($id)) {
 
-				$model->saveRandomCodeVerification($id);
-				$code = $model->getCodeVerificationByID($id);
-				$subject = 'Restablecer password en ' . Yii::app()->name;
-				$mensaje = $model->get_mensaje_pass_reset($id, $code);
+					$model->saveRandomCodeVerification($id);
+					$code = $model->getCodeVerificationByID($id);
+					$subject = 'Restablecer password en ' . Yii::app()->name;
+					$mensaje = $model->get_mensaje_pass_reset($id, $code);
+					
+					//~ se envia un email al usuario
+					Email::enviar($model->email, $subject, $mensaje);				
 				
-				//~ se envia un email al usuario
-				Email::enviar($model->email, $subject, $mensaje);				
+					$mensaje = "<center><big><b><h3>Restablecer Contraseña</h3>"
+								."</b>Revisa tu correo <b>". $model->email
+								."</b><br>Te hemos enviado un email para "
+								."restablecer tu contraseña</center></big><br>";
+					Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
+					$this->refresh();				
 			
-				$mensaje = "<center><big><b><h3>Restablecer Contraseña</h3>"
-							."</b>Revisa tu correo <b>". $model->email
-							."</b><br>Te hemos enviado un email para "
-							."restablecer tu contraseña</center></big><br>";
-				Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
-				$this->refresh();				
-		
+				}
+				else {
+					Yii::app()->user->setFlash('success', 
+								'<center><big>No podes cambiar tu contraseña.<br>'
+								.'Primero tenes que activar tu cuenta desde tu correo.</center></big>');	
+					$this->refresh();
+				}
 			}
 		}
 
@@ -162,7 +170,7 @@ class SiteController extends Controller
 							."tu <b>nueva contraseña</b></center></big><br>";
 				Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
 				$this->refresh();
-				
+			
 			}
 			else
 				$this->redirect('login');
