@@ -9,6 +9,11 @@ $this->breadcrumbs=array(
 );
 ?>
 
+<?php if(Yii::app()->user->hasFlash('success'))
+	$this->widget('bootstrap.widgets.TbAlert', array('alerts'=>array('success'),));
+?>
+
+
 <h1>Login</h1>
 
 <p>Please fill out the following form with your login credentials:</p>
@@ -33,7 +38,11 @@ $this->breadcrumbs=array(
     )); ?>
 
 	<?php echo $form->checkBoxRow($model,'rememberMe'); ?>
-
+	
+	<div class="controls">
+		<?php echo CHtml::link(CHtml::encode('¿Olvidaste tu contraseña?'),array('password_recovery')); ?>
+	</div>
+	
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType'=>'submit',
