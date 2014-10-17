@@ -41,15 +41,15 @@ class UsuariosController extends Controller
 				'expression'=>'Yii::app()->user->isGuest;'
 			),		
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create'),
+				'actions'=>array('create'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('view','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','create','index','view','create','update'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -80,15 +80,53 @@ class UsuariosController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
+		//~ ---------  SE REGISTRA LA CUENTA DE USUARIO  ----------------------
 		if(isset($_POST['Usuarios']))
-		{
+		{	
 			$model->attributes=$_POST['Usuarios'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			
+			//~ $model->password = sha1($model->password);
+			$model->account_verification_code = sha1(rand(1, 999999999999));
+			$model->username = ucwords($model->username);
+			if($model->save()) {
+				if(Yii::app()->user->isGuest) {
+					
+					//~ se envia el email al usuario
+					$subject = 'Confirmar registro en ' . Yii::app()->name;
+					$mensaje = Email::get_mensaje_activar_cuenta(
+								$model->username, $model->id, $model->account_verification_code);
+					Email::enviar($model->email, $subject, $mensaje);
+					
+					//~ se muestra un mensaje flash al usuario
+					$mensaje = Email::get_mensaje_revisar_correo(
+								$model->username, $model->email);
+					Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
+					$this->refresh();				
+				}
+				else
+					$this->redirect(array('view','id'=>$model->id));
+			
+			}
 		}
-
+		//~ ---------  SE ACTIVA LA CUENTA DE USUARIO  -------------------------------------------
+		//~ se recive el id de usuario y un hash aleatorio generado durante el registro de usuario
+		else if ((isset($_GET['i'])) && (isset($_GET['c']))) {
+			//~ se activa la cuenta luego de verificar que los datos sean correctos 
+			if($model->activarCuentaUsuario($_GET['i'], $_GET['c'])) {
+				
+				//~ se muestra un mensaje flash al usuario
+				$mensaje = "<center><big>Felicitaciones! Ya puedes iniciar sesión.</center></big>";
+				Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
+			}
+			$this->redirect('create');
+		}
+		
+		//~ se renueva el captcha_code
+		Yii::app()->getController()->createAction('captcha')->getVerifyCode(true);
+		
 		$this->render('create',array('model'=>$model));
 	}
+
 
 	/**
 	 * Updates a particular model.
@@ -185,4 +223,6 @@ class UsuariosController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+
 }
