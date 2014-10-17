@@ -38,6 +38,7 @@ return array(
 		
 	),
 
+
 	// application components
 	'components'=>array(
 		'bootstrap'=>array(
