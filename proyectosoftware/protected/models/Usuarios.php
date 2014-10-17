@@ -22,11 +22,10 @@
  */
 class Usuarios extends CActiveRecord
 {
-	public $username;
+
 	public $repeat_email;
-	public $captcha_code;
-	public $longitud = 1234.1234123;
-		
+	public $captcha_code;	
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -42,81 +41,84 @@ class Usuarios extends CActiveRecord
 	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
-		return array(
-			array('dni, username, street, street_number, sexo, password, email, repeat_email', 'required'),
+		if(Yii::app()->user->name === 'admin') {
+			return array(
+				array('dni, username, street, street_number, sexo, password, email, latitud, longitud', 'required'),
+				array(
+					'dni',
+					'validate_dni',
+					'message'=>'DNI no disponible.'					
+					),
+				array(
+					'email',
+					'validate_email',
+					'message'=>'Email no disponible.'
+					),				
+			);
+		}
+		else {
+			return array(
+				array('dni, username, street, street_number, sexo, password, email, repeat_email, captcha_code, latitud, longitud', 'required'),
 
-			array('dni', 'length', 'min'=>7, 'max'=>8),
-			array('username', 'length', 'min'=>4, 'max'=>16),
-			array('street', 'length', 'min'=>10, 'max'=>128),
-			array('street_number', 'length', 'max'=>6),
-			array('password', 'length', 'min'=>6, 'max'=>20),
-			array('email', 'length', 'min'=>10, 'max'=>64),
-			array(
-				'captcha_code',
-				'CaptchaExtendedValidator',
-				'allowEmpty'=>!CCaptcha::checkRequirements()
-				),
-			array(
-				'dni',
-				'match',
-				'pattern'=>'/^[0-9]+$/i',
-				'message'=>'Solo se permiten números.',
-				),
-			array(
-				'username',
-				'match',
-				'pattern'=>'/^[a-zàèìòùáéíóúñ ]+$/i',
-				'message'=>'Solo se permiten letras y espacios.',
-				),
-			array(
-				'email',
-				'email',
-				'message'=>'El formato del Email no es válido.',
-				),
-			array(
-				'repeat_email',
-				'compare',
-				'compareAttribute'=>'email',
-				'message'=>'Las direcciones de Email no coiciden .',
-				),							
-			array(
-				'password',
-				'match',
-				'pattern'=>'/^[a-z0-9ñ\_]+$/i',
-				'message'=>'Solo se permiten letras y números.',
-				),
-			//~ array(
-				//~ 'street',
-				//~ 'match',
-				//~ 'pattern'=>'/^[a-z0-9àèìòùáéíóúñ ]+$/i',
-				//~ 'message'=>'Solo se permiten letras, números y espacios.',
-				//~ ),
-			array(
-				'street_number',
-				'match',
-				'pattern'=>'/^[0-9]+$/i',
-				'message'=>'Solo se permiten números.',
-				),
-			//~ array(
-				//~ 'dni',
-				//~ 'validate_dni',
-				//~ ),
-			//~ array(
-				//~ 'email',
-				//~ 'validate_email',
-				//~ 'message'=>'Email no puede .'
-				//~ ),
-			array(
-				'sexo',
-				'validate_sexo',
-				),			
-			
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, dni, username, street, street_number, sexo, password, email, account_verification_code, active, fecha_alta, fecha_ultimo_login, user_type, latitud, longitud', 'safe', 'on'=>'search'),
+				array('dni', 'length', 'min'=>7, 'max'=>8),
+				array('username', 'length', 'min'=>4, 'max'=>32),
+				array('street', 'length', 'min'=>10, 'max'=>255),
+				array('street_number', 'length', 'max'=>6),
+				array('password', 'length', 'min'=>6, 'max'=>20),
+				array('email', 'length', 'min'=>10, 'max'=>64),
+				array('captcha_code', 'CaptchaExtendedValidator', 'allowEmpty'=>!CCaptcha::checkRequirements()),
+				//~ array('fecha_alta, fecha_ultimo_login, user_type', 'safe'),
+				array(
+					'dni',
+					'match',
+					'pattern'=>'/^[0-9]+$/i',
+					'message'=>'Solo se permiten números.',
+					),
+				array(
+					'username',
+					'match',
+					'pattern'=>'/^[a-zàèìòùáéíóúñ ]+$/i',
+					'message'=>'Solo se permiten letras y espacios.',
+					),
+				array(
+					'email',
+					'email',
+					'message'=>'El formato del email es incorrecto.',
+					),
+				array(
+					'repeat_email',
+					'compare',
+					'compareAttribute'=>'email',
+					'message'=>'Las direcciones de Email no coiciden.',
+					),							
+				array(
+					'street_number',
+					'match',
+					'pattern'=>'/^[0-9]+$/i',
+					'message'=>'Solo se permiten números.',
+					),
+				array(
+					'dni',
+					'validate_dni',
+					'message'=>'DNI no disponible.'					
+					),
+				array(
+					'email',
+					'validate_email',
+					'message'=>'Email no disponible.'
+					),
+				array(
+					'sexo',
+					'validate_sexo',
+					),
+
+
+				// The following rule is used by search().
+				// @todo Please remove those attributes that should not be searched.
+				array('id, dni, username, street, street_number, sexo, password, email, account_verification_code, active, fecha_alta, fecha_ultimo_login, user_type, latitud, longitud', 'safe', 'on'=>'search'),
+			);
+		}
 		
-		
-		);
 	}
 
 	/**
@@ -138,14 +140,13 @@ class Usuarios extends CActiveRecord
 		return array(
 			'dni' => 'DNI',
 			'username' => 'Nombre y Apellido',
+			'street' => 'Dirección',
+			'street_number' => 'Número',
+			'sexo' => 'Sexo',
+			'password' => 'Contraseña',
 			'email' => 'Email',
-			'repeat_email'=>'Repetir Email',
-			'password'=>'Contraseña',
-			'street'=>'Dirección',
-			'street_number'=>'Número',
-			'sexo'=>'Sexo',
-			'conditions'=>'Acepto los términos y condiciones',
-			'captcha_code'=>'Captcha',			
+			'repeat_email' => 'Repetir Email',
+			'captcha_code' => 'Captcha',
 		);
 	}
 
@@ -188,7 +189,6 @@ class Usuarios extends CActiveRecord
 		));
 	}
 
-
 	/**
 	 * se comprueba si el SEXO es seleccionado
 	 */
@@ -196,6 +196,7 @@ class Usuarios extends CActiveRecord
 		if($this->sexo === 'vacio')
 			$this->addError('sexo','Por favor, indica tu sexo.');	
 	}
+
 	
 	/**
 	 * @return array 
@@ -203,9 +204,65 @@ class Usuarios extends CActiveRecord
 	public function get_opctions_sexo(){
 		return array('vacio' => 'Indica tu sexo', 'Hombre' => 'Hombre', 'Mujer' => 'Mujer', 'Otro' => 'Otro');	
 	}	
+	
+	
+	/**
+	 * se comprueba mediante AJAX si el DNI ya está registrado en la base de datos
+	 */
+	public function validate_dni() {
+			
+		$filas = Usuarios::model()->findAll();
+		foreach ($filas as $fila) {
+			if($fila->dni == $this->dni)
+				$this->addError('dni','DNI no disponible.');
+			break;
+		}		
+	}		
+	
+	
+	/**
+	 * se comprueba mediante AJAX si el EMAIL ya está registrado en la base de datos
+	 */
+	public function validate_email() {
 
+		$filas = Usuarios::model()->findAll();
+		foreach ($filas as $fila) {
+			if($fila->email == $this->email)
+				$this->addError('email','Email no disponible.');
+			break;
+		}		
+	}
+	
+	/**
+	 * return true si se consigue activar la cuenta de usuario.
+	 */
+	public function activarCuentaUsuario($id, $code)
+	{
+		//~ se comprueba que los parametros recibidos por GET sean correctos
+		if ((preg_match('/^[0-9]+$/i', $id)) && (preg_match('/^[a-z0-9]+$/i', $code))) {
+			
+			//~ se almacena la fila correspondiente al $id de la tabla usuarios(BD)  
+			$fila=Usuarios::model()->findByPk($id);
 
+			//~ comprovamos que la fila exista
+			if($fila) {
+				//~ si el codigo asociado al id (BD) es igual al codigo recibido por GET
+				//~ y la cuenta no está activada (active == 0)
+				//~ entonces se activa la cuenta de usuario (active = 1)
+				if (($fila->account_verification_code === $code) && ($fila->active == 0)) {
+					//~ dentro del array se pasan los campos a ser modificados
+					$fila->updateByPk($id, array('active'=>1));
+					$fila->updateByPk($id, array('fecha_alta'=>date('Y-m-d')));
+					return true;
+				}
+			}
 
+		}
+		return false;
+		
+	}	
+	
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
