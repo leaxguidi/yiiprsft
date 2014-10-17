@@ -7,13 +7,13 @@ class SiteController extends Controller
 	 */
 	public function actions()
 	{
-		return array(
-            'captcha'=>array(
-                'class'=>'CaptchaExtendedAction',
-                // if needed, modify settings
-                'mode'=>CaptchaExtendedAction::MODE_MATH,
-            ),
-        );
+		//~ return array(
+            //~ 'captcha'=>array(
+                //~ 'class'=>'CaptchaExtendedAction',
+                //~ // if needed, modify settings
+                //~ 'mode'=>CaptchaExtendedAction::MODE_MATH,
+            //~ ),
+        //~ );
 	}
 
 	/**
@@ -89,9 +89,91 @@ class SiteController extends Controller
 			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
+
+
+		
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
+
+
+	/**
+	 * Password_recovery
+	 */
+	public function actionPassword_recovery()
+	{
+		$model=new PasswordRecovery;
+
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='password-recovery')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+
+		// collect user input data
+		
+		if(isset($_POST['PasswordRecovery']))
+		{
+			$model->attributes=$_POST['PasswordRecovery'];
+			
+			$id = $model->getIdByEmail($model->email);
+			if ($id) {
+
+				$model->saveRandomCodeVerification($id);
+				$code = $model->getCodeVerificationByID($id);
+				$subject = 'Restablecer password en ' . Yii::app()->name;
+				$mensaje = $model->get_mensaje_pass_reset($id, $code);
+				
+				//~ se envia un email al usuario
+				Email::enviar($model->email, $subject, $mensaje);				
+			
+				$mensaje = "<center><big><b><h3>Restablecer Contraseña</h3>"
+							."</b>Revisa tu correo <b>". $model->email
+							."</b><br>Te hemos enviado un email para "
+							."restablecer tu contraseña</center></big><br>";
+				Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
+				$this->refresh();				
+		
+			}
+		}
+
+		if ((isset($_GET['i'])) && (isset($_GET['c']))) {
+			//~ se verifican los datos recibidos por GET 
+			if($model->validarGETS($_GET['i'], $_GET['c'])) {
+				$id = $_GET['i'];
+				$model->saveRandomCodeVerification($id);
+				$model->saveRandomPassword($id);
+				$new_pass = $model->getPasswordByID($id);
+				$email = $model->getEmailByID($id);
+
+				$subject = 'Nuevo password en ' . Yii::app()->name;
+				$mensaje = 'Tu nueva contraseña es <b>'. $new_pass .'</b><br>'
+							.' Te recomendamos que la cambies al iniciar sesión.<br>'
+							.'<br><br>Muchas gracias!!!'
+							.'<br>El equipo de Proyecto de Software (UNAJ)';
+				
+				//~ se envia un email al usuario
+				Email::enviar($email, $subject, $mensaje);
+
+				$mensaje = "<center><big><b><h3>Tu contraseña se ha modificado.</h3>"
+							."</b>Revisa tu correo <b>". $email
+							."</b><br>Te hemos enviado un email con "
+							."tu <b>nueva contraseña</b></center></big><br>";
+				Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
+				$this->refresh();
+				
+			}
+			else
+				$this->redirect('login');
+							
+		}
+		
+		// display the login form
+		$this->render('password_recovery',array('model'=>$model));
+	}
+
+
 
 	/**
 	 * Logs out the current user and redirect to homepage.
