@@ -19,7 +19,13 @@
 		
 		<div class="well">
 			<?php echo $form->errorSummary($model); ?>
-			<?php echo $form->textFieldRow($model,'email',array('class'=>'span5','placeholder'=>'Ingresa tu correo electrónico')); ?>
+			<?php echo $form->textFieldRow($model,'email',
+				array(
+					'class'=>'span5',
+					'placeholder'=>'Ingresa tu correo electrónico',
+					'hint'=>'<font size=2 color="#009200">Te enviaremos un correo para restablecer tu contraseña.</font>')
+					);
+			?>
 		<div class="controls">
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
 					'buttonType'=>'submit',
