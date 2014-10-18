@@ -44,16 +44,6 @@ class Usuarios extends CActiveRecord
 		if(Yii::app()->user->name === 'admin') {
 			return array(
 				array('dni, username, street, street_number, sexo, password, email, latitud, longitud', 'required'),
-				array(
-					'dni',
-					'validate_dni',
-					'message'=>'DNI no disponible.'					
-					),
-				array(
-					'email',
-					'validate_email',
-					'message'=>'Email no disponible.'
-					),				
 			);
 		}
 		else {

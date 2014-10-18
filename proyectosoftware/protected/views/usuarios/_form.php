@@ -12,8 +12,8 @@
 	<?php echo $form->textFieldRow($model,'dni',array('class'=>'span2','placeholder'=>'12345678')); ?>
 	<?php echo $form->textFieldRow($model,'username',array('class'=>'span3','placeholder'=>'Nombre Apellido')); ?>
 	
-	<input type="hidden" name="Usuarios[latitud]" id="Usuarios_latitud">
-	<input type="hidden" name="Usuarios[longitud]" id="Usuarios_longitud">	
+	<input type="hidden" name="Usuarios[latitud]" id="Usuarios_latitud" value="<?php echo $model->latitud ?>">
+	<input type="hidden" name="Usuarios[longitud]" id="Usuarios_longitud" value="<?php echo $model->longitud ?>">	
 
 	<div class="control-group">
 		<label class="control-label required" for="Usuarios_street">
@@ -23,15 +23,17 @@
 		<div class="controls">
 			<input class="span5" placeholder="Avenida Rivadavia, Quilmes, Buenos Aires, Argentina." 
 			name="Usuarios[street]" id="Usuarios_street" type="text" onkeypress="return pulsar(event)"
-			value="<?php echo (isset($direc)) ? $direc : '' ;  ?>" >
+			value="<?php echo (isset($direc)) ? $direc : $model->street ;  ?>" >
 		</div>		
 	</div>
 
 	<?php echo $form->textFieldRow($model,'street_number',array('class'=>'span3','placeholder'=>'Número de casa')); ?>
 	<?php echo $form->dropDownListRow($model, 'sexo', $model->get_opctions_sexo()); ?>
 	<?php echo $form->textFieldRow($model,'email',array('class'=>'span4','placeholder'=>'Correo electrónico')); ?>
-				
-	<?php echo $form->textFieldRow($model,'repeat_email',array('class'=>'span4','placeholder'=>'Repite el correo electrónico')); ?>
+	
+	<?php if(Yii::app()->user->name !== 'admin'): ?>
+		<?php echo $form->textFieldRow($model,'repeat_email',array('class'=>'span4','placeholder'=>'Repite el correo electrónico')); ?>
+	<?php endif; ?>
 	<?php echo $form->passwordFieldRow($model,'password',array('class'=>'span3','placeholder'=>'Crea una contraseña')); ?>
 
 	<!----------  campos visibles solo para el admin  -------------------------------------------------->
