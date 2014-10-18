@@ -98,6 +98,11 @@ class Usuarios extends CActiveRecord
 					'message'=>'Email no disponible.'
 					),
 				array(
+					'username',
+					'validate_username',
+					'message'=>'Nonbre de usuario no disponible.'
+					),
+				array(
 					'sexo',
 					'validate_sexo',
 					),
@@ -221,6 +226,15 @@ class Usuarios extends CActiveRecord
 				$this->addError('email','Email no disponible.');
 			break;
 		}		
+	}
+	
+	/**
+	 * se comprueba mediante AJAX que el USERNAME sea distinto de 'admin'
+	 */
+	public function validate_username() {
+
+		if(strtolower($this->username) == 'admin')
+			$this->addError('username','Usuario no disponible.');
 	}
 	
 	/**
