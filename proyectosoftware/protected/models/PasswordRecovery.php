@@ -140,16 +140,16 @@ class PasswordRecovery extends CActiveRecord
 
 	/**
 	 * se genera un password aleatorio  
-	 * que reemplaza el pass del usuario
-	 * se guarda en la BD
+	 * que reemplaza el pass del usuario en la BD
+	 * se devuelve el pass sin hashear
 	 */
-	public function saveRandomPassword($id)
+	public function saveAndGetRandomPassword($id)
 	{
 		$pass = rand(100000, 999999);
 		//~ se almacena la fila correspondiente al $id del usuarios(BD)  
 		$fila=Usuarios::model()->findByPk($id);
-		$fila->updateByPk($id, array('password'=>$pass));
-		
+		$fila->updateByPk($id, array('password'=>sha1($pass)));
+		return $pass;
 	}	
 
 	/**

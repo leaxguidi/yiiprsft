@@ -151,8 +151,7 @@ class SiteController extends Controller
 			if($model->validarGETS($_GET['i'], $_GET['c'])) {
 				$id = $_GET['i'];
 				$model->saveRandomCodeVerification($id);
-				$model->saveRandomPassword($id);
-				$new_pass = $model->getPasswordByID($id);
+				$new_pass = $model->saveAndGetRandomPassword($id);
 				$email = $model->getEmailByID($id);
 
 				$subject = 'Nuevo password en ' . Yii::app()->name;
