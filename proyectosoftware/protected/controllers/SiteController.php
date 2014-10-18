@@ -139,8 +139,8 @@ class SiteController extends Controller
 				}
 				else {
 					Yii::app()->user->setFlash('success', 
-								'<center><big>No podes cambiar tu contraseña.<br>'
-								.'Primero tenes que activar tu cuenta desde tu correo.</center></big>');	
+								'<br><center><big>No podes cambiar tu <b>contraseña</b>.<br>'
+								.'Primero tenes que <b>activar tu cuenta</b> desde tu correo.</center></big><br>');	
 					$this->refresh();
 				}
 			}
