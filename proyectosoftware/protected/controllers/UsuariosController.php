@@ -85,7 +85,7 @@ class UsuariosController extends Controller
 		{	
 			$model->attributes=$_POST['Usuarios'];
 			
-			//~ $model->password = sha1($model->password);
+			$model->password = sha1($model->password);
 			$model->account_verification_code = sha1(rand(1, 999999999999));
 			$model->username = ucwords($model->username);
 			if($model->save()) {
