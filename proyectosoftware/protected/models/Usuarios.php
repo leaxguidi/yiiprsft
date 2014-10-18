@@ -64,7 +64,7 @@ class Usuarios extends CActiveRecord
 				array('username', 'length', 'min'=>4, 'max'=>32),
 				array('street', 'length', 'min'=>10, 'max'=>255),
 				array('street_number', 'length', 'max'=>6),
-				array('password', 'length', 'min'=>6, 'max'=>20),
+				array('password', 'length', 'min'=>6, 'max'=>40),
 				array('email', 'length', 'min'=>10, 'max'=>64),
 				array('captcha_code', 'CaptchaExtendedValidator', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 				//~ array('fecha_alta, fecha_ultimo_login, user_type', 'safe'),
