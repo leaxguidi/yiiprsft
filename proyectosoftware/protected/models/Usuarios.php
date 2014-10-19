@@ -273,6 +273,31 @@ class Usuarios extends CActiveRecord
 		return Usuarios::model()->findByPk($id);
 		
 	}
+
+	/**
+	 * se chequea que el codigo de verificacion y el id
+	 * recibidos por GET, pertenezcan al mismo usuario en la BD.
+	 */
+	public function validarGETS($id, $code)
+	{
+		//~ se comprueba que los parametros recibidos por GET sean correctos
+		if ((preg_match('/^[0-9]+$/i', $id)) && (preg_match('/^[a-z0-9]+$/i', $code))) {
+			
+			//~ se almacena la fila correspondiente al $id de usuario(BD)  
+			$fila=Usuarios::model()->findByPk($id);
+
+			//~ comprovamos que la fila exista
+			if($fila) {
+				//~ si el codigo esta asociado al id de usuario
+				if ($fila->account_verification_code === $code) {
+					return true;
+				}
+			}
+
+		}
+		return false;
+		
+	}	
 	
 	
 	/**
@@ -280,26 +305,22 @@ class Usuarios extends CActiveRecord
 	 */
 	public function activarCuentaUsuario($id, $code)
 	{
-		//~ se comprueba que los parametros recibidos por GET sean correctos
-		if ((preg_match('/^[0-9]+$/i', $id)) && (preg_match('/^[a-z0-9]+$/i', $code))) {
-			
-			//~ se almacena la fila correspondiente al $id de la tabla usuarios(BD)  
-			$fila=Usuarios::model()->findByPk($id);
+		//~ se almacena la fila correspondiente al $id de la tabla usuarios(BD)  
+		$fila=Usuarios::model()->findByPk($id);
 
-			//~ comprovamos que la fila exista
-			if($fila) {
-				//~ si el codigo asociado al id (BD) es igual al codigo recibido por GET
-				//~ y la cuenta no está activada (active == 0)
-				//~ entonces se activa la cuenta de usuario (active = 1)
-				if (($fila->account_verification_code === $code) && ($fila->active == 0)) {
-					//~ dentro del array se pasan los campos a ser modificados
-					$fila->updateByPk($id, array('active'=>1));
-					$fila->updateByPk($id, array('fecha_alta'=>date('Y-m-d')));
-					return true;
-				}
+		//~ comprovamos que la fila exista
+		if($fila) {
+			//~ si el codigo asociado al id (BD) es igual al codigo recibido por GET
+			//~ y la cuenta no está activada (active == 0)
+			//~ entonces se activa la cuenta de usuario (active = 1)
+			if (($fila->account_verification_code === $code) && ($fila->active == 0)) {
+				//~ dentro del array se pasan los campos a ser modificados
+				$fila->updateByPk($id, array('active'=>1));
+				$fila->updateByPk($id, array('fecha_alta'=>date('Y-m-d')));
+				return true;
 			}
-
 		}
+
 		return false;
 		
 	}	
@@ -315,4 +336,39 @@ class Usuarios extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function get_mensaje_revisar_correo($nombre, $email) {	
+		$mensaje = 'Bien hecho <b>'. ucwords($nombre) .'</b><br>'
+				.'Revisa tu correo <b>' . $email . '</b><br>'
+				.' Te hemos enviado un email para activar tu cuenta.';
+		return $this->get_formato_html($mensaje);	
+	
+	}
+	
+	public function get_mensaje_activar_cuenta($nombre, $id, $codigo) {	
+		
+		//~ se comprueba si el sistema se ejecuta en el servidor o a nivel local
+		$localhost = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'localhost' : '';
+		
+		//~ el link sera armado en base a la variable $localhost
+		$link = $localhost . Yii::app()->baseUrl . '/usuarios/create?';
+		
+		$parametros_get = "i=" . $id . "&c=" . $codigo;
+
+		return "Hola <b>". ucwords($nombre) ."!</b><br><br>"
+				." Para confirmar tu cuenta, haz clic "
+				."<a href='" . $link . $parametros_get
+				."' target='_blank'>aqui</a>"
+				." o pega el siguiente enlace en tu navegador. "
+				."<a href='" . $link . $parametros_get
+				."' target='_blank'>". $link . $parametros_get ."</a>"				
+				."<br><br>Muchas gracias!!!"
+				."<br>El equipo de Proyecto de Software (UNAJ)"
+				;
+	
+	}
+	
+	public function get_formato_html($mensaje) {
+		return "<br><center><big>".$mensaje."</center></big><br>";
+	}		
 }

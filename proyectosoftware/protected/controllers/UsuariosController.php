@@ -85,7 +85,7 @@ class UsuariosController extends Controller
 		{	
 			$model->attributes=$_POST['Usuarios'];
 			
-			$model->password = sha1($model->password);
+			$model->password = (empty($model->password)) ? '' : sha1($model->password);
 			$model->account_verification_code = sha1(rand(1, 999999999999));
 			$model->username = ucwords($model->username);
 			if($model->save()) {
@@ -93,12 +93,12 @@ class UsuariosController extends Controller
 					
 					//~ se envia el email al usuario
 					$subject = 'Confirmar registro en ' . Yii::app()->name;
-					$mensaje = Email::get_mensaje_activar_cuenta(
+					$mensaje = $model->get_mensaje_activar_cuenta(
 								$model->username, $model->id, $model->account_verification_code);
 					Email::enviar($model->email, $subject, $mensaje);
 					
 					//~ se muestra un mensaje flash al usuario
-					$mensaje = Email::get_mensaje_revisar_correo(
+					$mensaje = $model->get_mensaje_revisar_correo(
 								$model->username, $model->email);
 					Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
 					$this->refresh();				
@@ -109,14 +109,24 @@ class UsuariosController extends Controller
 			}
 		}
 		//~ ---------  SE ACTIVA LA CUENTA DE USUARIO  -------------------------------------------
+		
 		//~ se recive el id de usuario y un hash aleatorio generado durante el registro de usuario
 		else if ((isset($_GET['i'])) && (isset($_GET['c']))) {
-			//~ se activa la cuenta luego de verificar que los datos sean correctos 
-			if($model->activarCuentaUsuario($_GET['i'], $_GET['c'])) {
+			$id = $_GET['i'];
+			$code = $_GET['c'];
+			
+			//~ se verifica que los datos tengan el formato correspondiente
+			if($model->validarGETS($id, $code)) {
 				
-				//~ se muestra un mensaje flash al usuario
-				$mensaje = "<center><big>Felicitaciones! Ya puedes iniciar sesión.</center></big>";
-				Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
+				//~ se activa la cuenta si el usuario está en la BD
+				if($model->activarCuentaUsuario($_GET['i'], $_GET['c'])) {
+				
+					//~ se muestra un mensaje flash al usuario
+					$username = $model->getDatosById($id)->username;
+					$mensaje = "Felicitaciones <b>".$username."</b>!!! Ya puedes iniciar sesión.";
+					$mensaje = $model->get_formato_html($mensaje);
+					Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
+				}
 			}
 			$this->redirect('create');
 		}

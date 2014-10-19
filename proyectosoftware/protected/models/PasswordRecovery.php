@@ -123,7 +123,7 @@ class PasswordRecovery extends CActiveRecord
 		if ((preg_match('/^[0-9]+$/i', $id)) && (preg_match('/^[a-z0-9]+$/i', $code))) {
 			
 			//~ se almacena la fila correspondiente al $id de usuario(BD)  
-			$fila=Usuarios::model()->findByPk($id);
+			$fila=PasswordRecovery::model()->findByPk($id);
 
 			//~ comprovamos que la fila exista
 			if($fila) {
@@ -199,5 +199,34 @@ class PasswordRecovery extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function get_mensaje_restablecer_pass($email) {	
+		$mensaje = "<h3>Restablecer Contraseña</h3>"
+				."</b>Revisa tu correo <b>". $email
+				."</b><br>Te hemos enviado un email para "
+				."restablecer tu contraseña";
+		return $this->get_formato_html($mensaje);
+
+	}
+
+	public function get_mensaje_pass_modificado($email) {	
+		$mensaje = "<h3>Tu contraseña se ha modificado.</h3>"
+				."</b>Revisa tu correo <b>". $email
+				."</b><br>Te hemos enviado un email con "
+				."tu <b>nueva contraseña</b>";
+		return $this->get_formato_html($mensaje);
+	}
+
+	public function get_mensaje_nuevo_pass($new_pass) {	
+		return 'Tu nueva contraseña es <b>'. $new_pass .'</b><br>'
+				.' Te recomendamos que la cambies al iniciar sesión.<br>'
+				.'<br><br>Muchas gracias!!!'
+				.'<br>El equipo de Proyecto de Software (UNAJ)';
+
+	}
+
+	public function get_formato_html($mensaje) {
+		return "<br><center><big>".$mensaje."</center></big><br>";
+	}		
 
 }

@@ -89,9 +89,6 @@ class SiteController extends Controller
 			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
-
-
-		
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
@@ -136,34 +133,20 @@ class SiteController extends Controller
 					$mensaje = $model->get_mensaje_pass_reset($id, $code);
 					
 					//~ se envia un email al usuario
-					Email::enviar($model->email, $subject, $mensaje);				
-				
-					$mensaje = "<center><big><b><h3>Restablecer Contraseña</h3>"
-								."</b>Revisa tu correo <b>". $model->email
-								."</b><br>Te hemos enviado un email para "
-								."restablecer tu contraseña</center></big><br>";
+					Email::enviar($model->email, $subject, $mensaje);
+					$mensaje = $model->get_mensaje_restablecer_pass($model->email);
 					Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
 					$this->refresh();				
-			
 				}
 				else {
-					
-					
 					Yii::app()->user->setFlash('success', 
 								'<br><center><big>No podes cambiar tu <b>contraseña</b>.<br>'
 								.'Primero tenes que <b>activar tu cuenta</b> desde tu correo.</center></big><br>');	
-
-					Yii::app()->clientScript->registerScript( 
-									'myHideEffect', 
-									'$("div[class^=flash-]").animate({opacity: 1.0}, 3000).fadeOut("slow");',
-									CClientScript::POS_READY 
-
-								);
-
 					$this->refresh();
 				}
 			}
 		}
+
 		/*
 		 * se reciben los datos (id, codigo_verificacion) por método GET
 		 * son enviados por el usuario (link recibido en su correo)
@@ -184,20 +167,12 @@ class SiteController extends Controller
 				//~ se ontiene el email del usuario 
 				$email = $model->getDatosById($id)->email;
 
-
 				$subject = 'Nuevo password en ' . Yii::app()->name;
-				$mensaje = 'Tu nueva contraseña es <b>'. $new_pass .'</b><br>'
-							.' Te recomendamos que la cambies al iniciar sesión.<br>'
-							.'<br><br>Muchas gracias!!!'
-							.'<br>El equipo de Proyecto de Software (UNAJ)';
-				
+				$mensaje = $model->get_mensaje_nuevo_pass($new_pass);
 				//~ se envia un email al usuario
 				Email::enviar($email, $subject, $mensaje);
 
-				$mensaje = "<center><big><b><h3>Tu contraseña se ha modificado.</h3>"
-							."</b>Revisa tu correo <b>". $email
-							."</b><br>Te hemos enviado un email con "
-							."tu <b>nueva contraseña</b></center></big><br>";
+				$mensaje = $model->get_mensaje_pass_modificado($email);
 				Yii::app()->user->setFlash('success', $mensaje);	//'success','error','notice','info'
 				$this->refresh();
 			
@@ -219,8 +194,6 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
-		Yii::app()->user->setFlash('info', 'asdlñfjkasñldk');	//'success','error','notice','info'
-		//~ $this->refresh();		
 		$this->redirect(Yii::app()->homeUrl);
 	}
 }
