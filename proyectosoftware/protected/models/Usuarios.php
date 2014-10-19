@@ -236,9 +236,47 @@ class Usuarios extends CActiveRecord
 		if(strtolower($this->username) == 'admin')
 			$this->addError('username','Usuario no disponible.');
 	}
+
+	/**
+	 * @return la fila correspondiente al DNI de usuario en la BD. 
+	 */	
+	public static function getDatosByDni($dni)
+	{
+		$filas = Usuarios::model()->findAll();
+		foreach ($filas as $fila) {
+			if($fila->dni == $dni)
+				return $fila;
+		}
+		return null;
+		
+	}
 	
 	/**
-	 * return true si se consigue activar la cuenta de usuario.
+	 * @return la fila correspondiente al EMAIL de usuario en la BD. 
+	 */	
+	public static function getDatosByEmail($email)
+	{
+		$filas = Usuarios::model()->findAll();
+		foreach ($filas as $fila) {
+			if($fila->email === $email)
+				return $fila;
+		}
+		return null;
+		
+	}
+	
+	/**
+	 * @return la fila correspondiente al ID de usuario en la BD. 
+	 */	
+	public static function getDatosById($id)
+	{
+		return Usuarios::model()->findByPk($id);
+		
+	}
+	
+	
+	/**
+	 * @return true si se consigue activar la cuenta de usuario.
 	 */
 	public function activarCuentaUsuario($id, $code)
 	{

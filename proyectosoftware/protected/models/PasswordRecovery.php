@@ -26,7 +26,7 @@ class PasswordRecovery extends CActiveRecord
 	{
 		return array(
 			// username and password are required
-			array('email', 'required'),
+			array('email, captcha_code', 'required'),
 			array(
 				'email',
 				'email',
@@ -75,7 +75,7 @@ class PasswordRecovery extends CActiveRecord
 		$code = sha1(rand(1, 999999999999));
 		
 		//~ se obtiene la fila de tabla usuarios mediante el id
-		$fila=Usuarios::model()->findByPk($id);
+		$fila = $this->getDatosById($id);
 		
 		//~ se almacena el hash en la fila del usuario
 		$fila->updateByPk($id, array('account_verification_code'=>$code));
@@ -122,7 +122,7 @@ class PasswordRecovery extends CActiveRecord
 		//~ se comprueba que los parametros recibidos por GET sean correctos
 		if ((preg_match('/^[0-9]+$/i', $id)) && (preg_match('/^[a-z0-9]+$/i', $code))) {
 			
-			//~ se almacena la fila correspondiente al $id de la tabla usuarios(BD)  
+			//~ se almacena la fila correspondiente al $id de usuario(BD)  
 			$fila=Usuarios::model()->findByPk($id);
 
 			//~ comprovamos que la fila exista
@@ -153,43 +153,51 @@ class PasswordRecovery extends CActiveRecord
 	}	
 
 	/**
-	 * se devuelve el password del usuario (id)  
-	 */
-	public function getPasswordByID($id)
+	 * @return la fila correspondiente al DNI de usuario en la BD. 
+	 */	
+	public function getDatosByDni($dni)
 	{
-		return Usuarios::model()->findByPk($id)->password;
+		$filas = PasswordRecovery::model()->findAll();
+		foreach ($filas as $fila) {
+			if($fila->dni == $dni)
+				return $fila;
+		}
+		return null;
 		
-	}	
+	}
+	
+	/**
+	 * @return la fila correspondiente al EMAIL de usuario en la BD. 
+	 */	
+	public function getDatosByEmail($email)
+	{
+		$filas = PasswordRecovery::model()->findAll();
+		foreach ($filas as $fila) {
+			if($fila->email === $email)
+				return $fila;
+		}
+		return null;
+		
+	}
+	
+	/**
+	 * @return la fila correspondiente al ID de usuario en la BD. 
+	 */	
+	public function getDatosById($id)
+	{
+		return Usuarios::model()->findByPk($id);
+		
+	}
 
 	/**
-	 * se devuelve el email del usuario (id)  
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return Usuarios the static model class
 	 */
-	public function getEmailByID($id)
+	public static function model($className=__CLASS__)
 	{
-		return Usuarios::model()->findByPk($id)->email;
-		
-	}	
-
-	/**
-	 * se devuelve el account_verification_code del usuario (id)  
-	 */
-	public function getCodeVerificationByID($id)
-	{
-		return Usuarios::model()->findByPk($id)->account_verification_code;
-		
-	}	
-
-	/**
-	 * se devuelve true si la cuenta de usuario esta activada  
-	 */
-	public function isUserActive($id)
-	{
-		if (Usuarios::model()->findByPk($id)->active == 1)
-			return true;
-		else
-			return false;
-		
-	}	
-
+		return parent::model($className);
+	}
 
 }

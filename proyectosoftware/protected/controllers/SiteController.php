@@ -105,6 +105,7 @@ class SiteController extends Controller
 		$model=new PasswordRecovery;
 
 		// if it is ajax validation request
+		
 		if(isset($_POST['ajax']) && $_POST['ajax']==='password-recovery')
 		{
 			echo CActiveForm::validate($model);
@@ -117,12 +118,20 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['PasswordRecovery'];
 			
-			$id = $model->getIdByEmail($model->email);
-			if ($id) {
-				if ($model->isUserActive($id)) {
+			//~ traemos la fila de la BD correspondiente al email
+			$fila = $model->getDatosByEmail($model->email);
+			
+			//~ si no existe el usuario
+			if (!$fila)
+				$model->addError('email','Email no disponible.');
+			
+			else {
+				$id = $fila->id;
+				//~ si tiene cuenta activa
+				if ($fila->active) {
 
 					$model->saveRandomCodeVerification($id);
-					$code = $model->getCodeVerificationByID($id);
+					$code = $model->getDatosById($id)->account_verification_code;
 					$subject = 'Restablecer password en ' . Yii::app()->name;
 					$mensaje = $model->get_mensaje_pass_reset($id, $code);
 					
@@ -138,21 +147,43 @@ class SiteController extends Controller
 			
 				}
 				else {
+					
+					
 					Yii::app()->user->setFlash('success', 
 								'<br><center><big>No podes cambiar tu <b>contraseña</b>.<br>'
 								.'Primero tenes que <b>activar tu cuenta</b> desde tu correo.</center></big><br>');	
+
+					Yii::app()->clientScript->registerScript( 
+									'myHideEffect', 
+									'$("div[class^=flash-]").animate({opacity: 1.0}, 3000).fadeOut("slow");',
+									CClientScript::POS_READY 
+
+								);
+
 					$this->refresh();
 				}
 			}
 		}
-
+		/*
+		 * se reciben los datos (id, codigo_verificacion) por método GET
+		 * son enviados por el usuario (link recibido en su correo)
+		 * para restablecer su contraseña.
+		 */
 		if ((isset($_GET['i'])) && (isset($_GET['c']))) {
-			//~ se verifican los datos recibidos por GET 
+			/*
+			 * se verifican los datos recibidos por GET
+			 * y se comprueba que esten registrados en la BD
+			 */
 			if($model->validarGETS($_GET['i'], $_GET['c'])) {
+				//~ se obtiene el id de usuario
 				$id = $_GET['i'];
+				//~ se guarda en la BD un nuevo código de verificación
 				$model->saveRandomCodeVerification($id);
+				//~ se guarda en la BD un nuevo password hasheado y se obtiene el pass sin hashear
 				$new_pass = $model->saveAndGetRandomPassword($id);
-				$email = $model->getEmailByID($id);
+				//~ se ontiene el email del usuario 
+				$email = $model->getDatosById($id)->email;
+
 
 				$subject = 'Nuevo password en ' . Yii::app()->name;
 				$mensaje = 'Tu nueva contraseña es <b>'. $new_pass .'</b><br>'
@@ -188,6 +219,8 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
+		Yii::app()->user->setFlash('info', 'asdlñfjkasñldk');	//'success','error','notice','info'
+		//~ $this->refresh();		
 		$this->redirect(Yii::app()->homeUrl);
 	}
 }
