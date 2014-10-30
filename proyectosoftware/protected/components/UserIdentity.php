@@ -17,17 +17,35 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
+		//~ dni ingresado en el login
+		$dni = $this->username;
+
+		//~ se obtiene la fila completa del usuario (BD)
+		//~ si el usuario no esta registrado, $fila es igual a null
+		$fila = Usuarios::getDatosByDni($dni);
+		
+		if($fila) {
+			/*
+			 * $fila->password es el password del usuario registrado en la BD (es un hash sha1)
+			 * si lo comparamos directamente con el password del login nunca va a coincidir
+			 * por eso a $this->password hay que aplicarle el mismo hash 
+			 * 
+			 * si coincide el password y si el usuario tiene su cuenta activa, entonces puede iniciar sesión
+			 */
+			if ($fila->password === sha1($this->password) && $fila->active == 1)
+				$this->errorCode=self::ERROR_NONE;
+			else
+				$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		}
+		else {
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
-		else
-			$this->errorCode=self::ERROR_NONE;
+		}
+
 		return !$this->errorCode;
 	}
+	
+	
+
+
+
 }
