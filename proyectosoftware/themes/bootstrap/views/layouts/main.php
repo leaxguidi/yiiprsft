@@ -20,6 +20,7 @@
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
                 array('label'=>'Inicio', 'url'=>array('/site/index')),
+                array('label'=>'Visitar', 'url'=>array('/visitas/visitar')),
                 array('label'=>'Registro', 'url'=>array('/usuarios/create'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Ingresar', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Usuarios', 'url'=>array('/usuarios/admin'), 'visible'=>Yii::app()->user->name === 'admin'),
