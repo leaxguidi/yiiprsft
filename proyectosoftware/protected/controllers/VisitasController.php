@@ -27,15 +27,15 @@ class VisitasController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','visitar'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','visitar'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','visitar'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -149,7 +149,18 @@ class VisitasController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	public function actionVisitar()
+	{
+		$model=new Visitas('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Visitas']))
+			$model->attributes=$_GET['Visitas'];
 
+		$this->render('visitar',array(
+			'model'=>$model->loadModelVisitor(Yii::app()->user->name),
+		));
+	}
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -162,7 +173,16 @@ class VisitasController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
+	
+	public function loadModelVisitor($dni)
+	{
+		$model=Visitas::model()->findAll('employeeid=:employeeid', array('employeeid' => $dni));
+		//findByAttributes(array('employeeid'=>$dni));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
 	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
