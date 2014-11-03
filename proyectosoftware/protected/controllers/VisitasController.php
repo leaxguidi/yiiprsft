@@ -153,13 +153,13 @@ class VisitasController extends Controller
 	public function actionVisitar()
 	{
 		$model=new Visitas;//('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Visitas']))
-			$model->attributes=$_GET['Visitas'];
+		//$model->unsetAttributes();  // clear any default values
+		//if(isset($_GET['Visitas']))
+			//$model->attributes=$_GET['Visitas'];
 		//print_r($model);
 		$this->render('visitar',array(
 			//'model'=>$model,
-			'model'=>$this->loadModelVisitor(Yii::app()->user->name),
+			'model'=>$this->loadModelVisitor(1/*Yii::app()->user->name*/),
 		));
 	}
 	/**
