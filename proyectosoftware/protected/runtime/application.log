@@ -3083,3 +3083,69 @@ Stack trace:
 REQUEST_URI=/~leandroguidi/yii/proyectosoftware/index.php?r=visitas/visitar
 HTTP_REFERER=http://localhost/~leandroguidi/yii/proyectosoftware/index.php?r=site/index
 ---
+2014/11/02 22:32:05 [error] [exception.CException] exception 'CException' with message 'Visitas y sus behaviors no tienen un método o closure llamado "loadModelVisitor".' in /Users/leandroguidi/Sites/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /Users/leandroguidi/Sites/yii/framework/db/ar/CActiveRecord.php(227): CComponent->__call('loadModelVisito...', Array)
+#1 /Users/leandroguidi/Sites/yii/proyectosoftware/protected/controllers/VisitasController.php(161): CActiveRecord->__call('loadModelVisito...', Array)
+#2 /Users/leandroguidi/Sites/yii/proyectosoftware/protected/controllers/VisitasController.php(161): Visitas->loadModelVisitor('admin')
+#3 /Users/leandroguidi/Sites/yii/framework/web/actions/CInlineAction.php(49): VisitasController->actionVisitar()
+#4 /Users/leandroguidi/Sites/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Users/leandroguidi/Sites/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Users/leandroguidi/Sites/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Users/leandroguidi/Sites/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /Users/leandroguidi/Sites/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Users/leandroguidi/Sites/yii/framework/web/CWebApplication.php(282): CController->run('visitar')
+#13 /Users/leandroguidi/Sites/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('visitas/visitar')
+#14 /Users/leandroguidi/Sites/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /Users/leandroguidi/Sites/yii/proyectosoftware/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/~leandroguidi/yii/proyectosoftware/index.php?r=visitas/visitar
+HTTP_REFERER=http://localhost/~leandroguidi/yii/proyectosoftware/index.php?r=usuarios/admin
+---
+2014/11/02 22:41:52 [error] [exception.CException] exception 'CException' with message 'Visitas y sus behaviors no tienen un método o closure llamado "loadModelVisitor".' in /Users/leandroguidi/Sites/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /Users/leandroguidi/Sites/yii/framework/db/ar/CActiveRecord.php(227): CComponent->__call('loadModelVisito...', Array)
+#1 /Users/leandroguidi/Sites/yii/proyectosoftware/protected/controllers/VisitasController.php(161): CActiveRecord->__call('loadModelVisito...', Array)
+#2 /Users/leandroguidi/Sites/yii/proyectosoftware/protected/controllers/VisitasController.php(161): Visitas->loadModelVisitor('Guest')
+#3 /Users/leandroguidi/Sites/yii/framework/web/actions/CInlineAction.php(49): VisitasController->actionVisitar()
+#4 /Users/leandroguidi/Sites/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Users/leandroguidi/Sites/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Users/leandroguidi/Sites/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Users/leandroguidi/Sites/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /Users/leandroguidi/Sites/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Users/leandroguidi/Sites/yii/framework/web/CWebApplication.php(282): CController->run('visitar')
+#13 /Users/leandroguidi/Sites/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('visitas/visitar')
+#14 /Users/leandroguidi/Sites/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /Users/leandroguidi/Sites/yii/proyectosoftware/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/~leandroguidi/yii/proyectosoftware/index.php?r=visitas/visitar
+HTTP_REFERER=http://localhost/~leandroguidi/yii/proyectosoftware/index.php?r=site/index
+---
+2014/11/02 22:53:29 [error] [exception.CException] exception 'CException' with message 'Visitas y sus behaviors no tienen un método o closure llamado "loadModelVisitor".' in /Users/leandroguidi/Sites/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /Users/leandroguidi/Sites/yii/framework/db/ar/CActiveRecord.php(227): CComponent->__call('loadModelVisito...', Array)
+#1 /Users/leandroguidi/Sites/yii/proyectosoftware/protected/controllers/VisitasController.php(161): CActiveRecord->__call('loadModelVisito...', Array)
+#2 /Users/leandroguidi/Sites/yii/proyectosoftware/protected/controllers/VisitasController.php(161): Visitas->loadModelVisitor('36901733')
+#3 /Users/leandroguidi/Sites/yii/framework/web/actions/CInlineAction.php(49): VisitasController->actionVisitar()
+#4 /Users/leandroguidi/Sites/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Users/leandroguidi/Sites/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Users/leandroguidi/Sites/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Users/leandroguidi/Sites/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Users/leandroguidi/Sites/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /Users/leandroguidi/Sites/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Users/leandroguidi/Sites/yii/framework/web/CWebApplication.php(282): CController->run('visitar')
+#13 /Users/leandroguidi/Sites/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('visitas/visitar')
+#14 /Users/leandroguidi/Sites/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /Users/leandroguidi/Sites/yii/proyectosoftware/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/~leandroguidi/yii/proyectosoftware/index.php?r=visitas/visitar
+HTTP_REFERER=http://localhost/~leandroguidi/yii/proyectosoftware/index.php
+---
