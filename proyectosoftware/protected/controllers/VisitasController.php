@@ -144,7 +144,7 @@ class VisitasController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Visitas']))
 			$model->attributes=$_GET['Visitas'];
-
+		
 		$this->render('admin',array(
 			'model'=>$model,
 		));
@@ -152,13 +152,14 @@ class VisitasController extends Controller
 	
 	public function actionVisitar()
 	{
-		$model=new Visitas('search');
+		$model=new Visitas;//('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Visitas']))
 			$model->attributes=$_GET['Visitas'];
-
+		//print_r($model);
 		$this->render('visitar',array(
-			'model'=>$model->loadModelVisitor(Yii::app()->user->name),
+			//'model'=>$model,
+			'model'=>$this->loadModelVisitor(Yii::app()->user->name),
 		));
 	}
 	/**
@@ -178,6 +179,7 @@ class VisitasController extends Controller
 	{
 		$model=Visitas::model()->findAll('employeeid=:employeeid', array('employeeid' => $dni));
 		//findByAttributes(array('employeeid'=>$dni));
+		//print_r($model);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
