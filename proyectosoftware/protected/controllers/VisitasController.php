@@ -159,7 +159,7 @@ class VisitasController extends Controller
 		//print_r($model);
 		$this->render('visitar',array(
 			//'model'=>$model,
-			'model'=>$this->loadModelVisitor(1/*Yii::app()->user->name*/),
+			'model'=>$this->loadModelVisitor(Yii::app()->user->id),
 		));
 	}
 	/**
