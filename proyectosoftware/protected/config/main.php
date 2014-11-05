@@ -74,14 +74,15 @@ return array(
 			'charset' => 'utf8',
 		),
 		
-		
+		*/
 		'db'=>array(
 			'connectionString' => 'mysql:host=db4free.net;dbname=medicos',
 			'emulatePrepare' => true,
 			'username' => 'proyecto2014',
 			'password' => 'Unaj2014',
 			'charset' => 'utf8',
-		),*/		
+		),
+		/*		
 		'db'=>array(
 			'connectionString' => 'mysql:host=127.0.0.1;dbname=medicos',
 			'emulatePrepare' => true,
@@ -89,7 +90,7 @@ return array(
 			'password' => '1234',
 			'charset' => 'utf8',
 		),
-		
+		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
