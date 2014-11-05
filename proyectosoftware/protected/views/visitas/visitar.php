@@ -7,32 +7,16 @@ $this->breadcrumbs=array(
 
 <?php 
 	//print_r($model);
-	foreach ($model as $data) {
+	/*foreach ($model as $data) {
 		echo "Direccion: ".$data->attributes['address']."<br>";
 		echo "Lat: ".$data->attributes['lat']."<br>";
 		echo "Lon: ".$data->attributes['lon']."<br><br>";
-	}
+	}*/
 
  ?>
 
-<!--<?php $this->widget('bootstrap.widgets.TbGridView',array(
-	'id'=>'visitas-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'visitid',
-		'patientid',
-		'zoneid',
-		'visitdate',
-		'employeeid',
-		'address',		
-		'lat',
-		'lon',
-		/*
-		'visited',
-		*/
-		array(
-			'class'=>'bootstrap.widgets.TbButtonColumn',
-		),
-	),
-)); ?>-->
+<?php $this->widget('bootstrap.widgets.TbListView',array(
+	'dataProvider'=>$model,
+	'itemView'=>'_view',
+)); ?>
+

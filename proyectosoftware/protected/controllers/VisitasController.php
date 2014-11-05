@@ -152,14 +152,14 @@ class VisitasController extends Controller
 	
 	public function actionVisitar()
 	{
-		$model=new Visitas;//('search');
+		$model = new CActiveDataProvider('Visitas');//('search');
 		//$model->unsetAttributes();  // clear any default values
 		//if(isset($_GET['Visitas']))
 			//$model->attributes=$_GET['Visitas'];
 		//print_r($model);
 		$this->render('visitar',array(
-			//'model'=>$model,
-			'model'=>$this->loadModelVisitor(Yii::app()->user->id),
+			'model' => $model,
+			//'model'=>$this->loadModelVisitor(Yii::app()->user->id),
 		));
 	}
 	/**

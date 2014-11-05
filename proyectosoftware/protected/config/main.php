@@ -73,7 +73,7 @@ return array(
 			'password' => 'ps@2014--UNAJ',
 			'charset' => 'utf8',
 		),
-		*/
+		
 		
 		'db'=>array(
 			'connectionString' => 'mysql:host=db4free.net;dbname=medicos',
@@ -81,14 +81,14 @@ return array(
 			'username' => 'proyecto2014',
 			'password' => 'Unaj2014',
 			'charset' => 'utf8',
-		),		
-		//~ 'db'=>array(
-			//~ 'connectionString' => 'mysql:host=127.0.0.1;dbname=yiiprsft',
-			//~ 'emulatePrepare' => true,
-			//~ 'username' => 'root',
-			//~ 'password' => '1234',
-			//~ 'charset' => 'utf8',
-		//~ ),
+		),*/		
+		'db'=>array(
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=medicos',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => '1234',
+			'charset' => 'utf8',
+		),
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
