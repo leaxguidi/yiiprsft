@@ -5,18 +5,25 @@ $this->breadcrumbs=array(
 
 <h1>Pacientes a visitar</h1>
 
-<?php 
-	//print_r($model);
-	/*foreach ($model as $data) {
-		echo "Direccion: ".$data->attributes['address']."<br>";
-		echo "Lat: ".$data->attributes['lat']."<br>";
-		echo "Lon: ".$data->attributes['lon']."<br><br>";
-	}*/
-
- ?>
-
-<?php $this->widget('bootstrap.widgets.TbListView',array(
+<!--<?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$model,
 	'itemView'=>'_view',
-)); ?>
+)); ?>-->
 
+<?php $this->widget('bootstrap.widgets.TbGridView',array(
+	'id'=>'visitas-grid',
+	'dataProvider'=>$model->searchEmployeeID(Yii::app()->user->id),
+	//'filter'=>$model,
+	'columns'=>array(
+		array(
+			'name'=>'patientid',
+			'value'=>'$data->patient->username',
+		),
+		'address',
+		'lat',
+		'lon',
+		array(
+			'class'=>'bootstrap.widgets.TbButtonColumn',
+		),
+	),
+)); ?>
