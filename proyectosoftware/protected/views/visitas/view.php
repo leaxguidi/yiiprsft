@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Visitases'=>array('index'),
+	'Visitas'=>array('index'),
 	$model->visitid,
 );
 
@@ -16,16 +16,17 @@ $this->menu=array(
 <h1>View Visitas #<?php echo $model->visitid; ?></h1>
 
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
-	'data'=>$model,
-	'attributes'=>array(
-		'visitid',
-		'patientid',
-		'zoneid',
-		'visitdate',
-		'employeeid',
-		'address',
-		'lat',
-		'lon',
-		'visited',
+	'dataProvider'=>$model,
+	'itemView'=>'_view',
+//	'attributes'=>array(
+//		'visitid',
+//		'patientid',
+//		'zoneid',
+//		'visitdate',
+//		'employeeid',
+//		'address',
+//		'lat',
+//		'lon',
+//		'visited',
 	),
 )); ?>
