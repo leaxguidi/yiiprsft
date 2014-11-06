@@ -152,11 +152,19 @@ class VisitasController extends Controller
 	
 	public function actionVisitar()
 	{
-		$model = new CActiveDataProvider('Visitas');//('search');
+		//$model = new CActiveDataProvider('Visitas',array(
+		//		'criteria'=> array(
+		//		'condition' => 'employeeid = :id and visitdate = CURDATE()',
+		//		'params' => array('id' => Yii::app()->user->id)
+		//		),
+		//));
+		$model=new Visitas('searchEmployeeID');
 		//$model->unsetAttributes();  // clear any default values
 		//if(isset($_GET['Visitas']))
 			//$model->attributes=$_GET['Visitas'];
+		//echo "Modelo data provider <br >";
 		//print_r($model);
+		//echo "<br ><br >";
 		$this->render('visitar',array(
 			'model' => $model,
 			//'model'=>$this->loadModelVisitor(Yii::app()->user->id),
@@ -170,16 +178,6 @@ class VisitasController extends Controller
 	public function loadModel($id)
 	{
 		$model=Visitas::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
-	
-	public function loadModelVisitor($dni)
-	{
-		$model=Visitas::model()->findAll('employeeid=:employeeid', array('employeeid' => $dni));
-		//findByAttributes(array('employeeid'=>$dni));
-		//print_r($model);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
