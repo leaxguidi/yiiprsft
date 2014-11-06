@@ -16,17 +16,16 @@ $this->menu=array(
 <h1>View Visitas #<?php echo $model->visitid; ?></h1>
 
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
-	'dataProvider'=>$model,
-	'itemView'=>'_view',
-//	'attributes'=>array(
-//		'visitid',
-//		'patientid',
-//		'zoneid',
-//		'visitdate',
-//		'employeeid',
-//		'address',
-//		'lat',
-//		'lon',
-//		'visited',
+	'data'=>$model,
+	'attributes'=>array(
+		'visitid',
+		'patientid',
+		'zoneid',
+		'visitdate',
+		'employeeid',
+		'address',
+		'lat',
+		'lon',
+		'visited',
 	),
 )); ?>
