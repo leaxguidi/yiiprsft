@@ -111,6 +111,15 @@ class Visitas extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function searchEmployeeID($id){
+		return new CActiveDataProvider('Visitas',array(
+				'criteria'=> array(
+				'condition' => 'employeeid = :id and visitdate = CURDATE()',
+				'params' => array('id' => $id)
+				),
+		));
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.
