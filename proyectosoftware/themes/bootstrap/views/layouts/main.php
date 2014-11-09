@@ -1,3 +1,11 @@
+<?php
+/**
+ * si el usuario no está logueado entonces $USERNAME = ''
+ * si está logueado $USERNAME = username(BD)
+ */
+$USERNAME = (Yii::app()->user->isGuest) ? '' : Yii::app()->user->getState('fila')->username;
+?>
+
 <?php /* @var $this Controller */ ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -25,7 +33,8 @@
                 array('label'=>'Ingresar', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Usuarios', 'url'=>array('/usuarios/admin'), 'visible'=>Yii::app()->user->name === 'admin'),
                 array('label'=>'Zonas', 'url'=>array('/zonas/admin'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Salir ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                array('label'=>'Perfil', 'url'=>array('/perfil/view'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Salir ('.$USERNAME.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
             ),
         ),
     ),
