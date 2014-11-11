@@ -3,7 +3,7 @@
 /* @var $model Usuarios */
 
 $this->menu=array(
-	array('label'=>'Cancelar', 'url'=>array('view')),
+	array('label'=>'Cancelar', 'url'=>array('authebticate')),
 );
 ?>
 
@@ -27,14 +27,14 @@ $this->menu=array(
 		<?php echo $form->errorSummary($model); ?>
 
 		<?php echo $form->textFieldRow($model,'dni', array('value'=>$model->dni, 'readonly'=>'false')); ?>
-		<?php echo $form->passwordFieldRow($model,'password', array('value'=>$model->password)); ?>
+		<?php echo $form->passwordFieldRow($model,'password', array('onkeypress'=>'return pulsar(event)', 'value'=>$model->password)); ?>
 
 
 	</div>	
 
 	<div class="well">
-		<?php echo $form->textFieldRow($model,'username', array('placeholder'=>$model->username, 'class'=>'span4')); ?>
-		<?php echo $form->textFieldRow($model,'email', array('value'=>$model->email, 'class'=>'span5')); ?>
+		<?php echo $form->textFieldRow($model,'username', array('onkeypress'=>'return pulsar(event)', 'class'=>'span4')); ?>
+		<?php echo $form->textFieldRow($model,'email', array('onkeypress'=>'return pulsar(event)', 'value'=>$model->email, 'class'=>'span5')); ?>
 
 		<input type="hidden" name="Perfil[latitud]" id="Perfil_latitud" value="<?php echo $model->latitud ?>">
 		<input type="hidden" name="Perfil[longitud]" id="Perfil_longitud" value="<?php echo $model->longitud ?>">	
@@ -52,7 +52,7 @@ $this->menu=array(
 		</div>
 
 
-		<?php echo $form->textFieldRow($model,'street_number', array('value'=>$model->street_number, 'class'=>'span2')); ?>
+		<?php echo $form->textFieldRow($model,'street_number', array('onkeypress'=>'return pulsar(event)', 'value'=>$model->street_number, 'class'=>'span2')); ?>
 
 		<?php echo $form->dropDownListRow($model, 'sexo', array('Hombre' => 'Hombre', 'Mujer' => 'Mujer', 'Otro' => 'Otro')); ?>
 
