@@ -115,7 +115,7 @@ class Visitas extends CActiveRecord
 	public function searchEmployeeID($id){
 		return new CActiveDataProvider('Visitas',array(
 				'criteria'=> array(
-				'condition' => 'employeeid = :id and visitdate = CURDATE()',
+				'condition' => 'employeeid = :id and visitdate = CURDATE() and ifnull(visited,0) = 0',
 				'params' => array('id' => $id)
 				),
 		));
