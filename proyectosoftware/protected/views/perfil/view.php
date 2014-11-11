@@ -3,7 +3,7 @@
 /* @var $model Perfil */
 
 $this->menu=array(
-	array('label'=>'Actualizar Perfil', 'url'=>array('update')),
+	array('label'=>'Opciones Perfil', 'url'=>array('authenticate')),
 );
 ?>
 
