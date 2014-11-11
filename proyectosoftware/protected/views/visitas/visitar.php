@@ -5,10 +5,10 @@ $this->breadcrumbs=array(
 
 <h1>Pacientes a visitar</h1>
 
-<!--<?php $this->widget('bootstrap.widgets.TbListView',array(
-	'dataProvider'=>$model,
-	'itemView'=>'_view',
-)); ?>-->
+<!--<?php //$this->widget('bootstrap.widgets.TbListView',array(
+	//'dataProvider'=>$model,
+	//'itemView'=>'_view',
+//)); ?>-->
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'visitas-grid',
