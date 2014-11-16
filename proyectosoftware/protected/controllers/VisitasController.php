@@ -31,7 +31,7 @@ class VisitasController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','visitar'),
+				'actions'=>array('admin','create','update','visitar'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -69,8 +69,9 @@ class VisitasController extends Controller
 		if(isset($_POST['Visitas']))
 		{
 			$model->attributes=$_POST['Visitas'];
+			$model->patientid= Yii::app()->user->id;// Yii::app()->user->getState('fila')->id;
 			$model->zoneid= 4;
-			$model->employeeid=4;
+			$model->employeeid=1;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->visitid));
 		}
@@ -152,10 +153,14 @@ class VisitasController extends Controller
 	
 	public function actionVisitar()
 	{
-		$model = new Visitas('searchEmployeeID');
-
+		$model=new Visitas;//('search');
+		//$model->unsetAttributes();  // clear any default values
+		//if(isset($_GET['Visitas']))
+			//$model->attributes=$_GET['Visitas'];
+		//print_r($model);
 		$this->render('visitar',array(
-			'model' => $model,
+			'model'=>$model,
+			//'model'=>$this->loadModelVisitor(1/*Yii::app()->user->name*/),
 		));
 	}
 	/**
@@ -166,6 +171,16 @@ class VisitasController extends Controller
 	public function loadModel($id)
 	{
 		$model=Visitas::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+	public function loadModelVisitor($dni)
+	{
+		$model=Visitas::model()->findAll('employeeid=:employeeid', array('employeeid' => $dni));
+		//findByAttributes(array('employeeid'=>$dni));
+		//print_r($model);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
