@@ -7,15 +7,30 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<?php echo $form->textFieldRow($model,'patientid',array('class'=>'span5','maxlength'=>20)); ?>
+	<!--<?php echo $form->textFieldRow($model,'patientid',array('class'=>'span5','maxlength'=>20)); ?>-->
 
 	<!--<?php echo $form->textFieldRow($model,'zoneid',array('class'=>'span5','maxlength'=>20)); ?>-->
 
-	<?php echo $form->textFieldRow($model,'visitdate',array('class'=>'span5')); ?>
+	<!--<?php echo $form->textFieldRow($model,'visitdate',array('class'=>'span5')); ?>-->
 
 	<!--<?php echo $form->textFieldRow($model,'employeeid',array('class'=>'span5','maxlength'=>20)); ?>-->
 
+	<?php echo $form->labelEx($model,'Fecha de visita'); ?>
+	<?php $form->widget('zii.widgets.jui.CJuiDatePicker',array(
+    'name'=>'visitdate', 'model'=>$model, 'attribute'=>'visitdate',
+	'value'=>date('Y-m-d'),
 	
+    // additional javascript options for the date picker plugin
+    'options'=>array(
+        'showAnim'=>'slide', 'dateFormat'=>'yy-mm-dd',
+		'showButtonPanel'=>true,
+		'currentText'=>'Now',
+    ),
+    'htmlOptions'=>array(
+        'style'=>'height:20px;',
+		'label'=>'fecha',
+    ),
+)); ?>
 
 	
 
