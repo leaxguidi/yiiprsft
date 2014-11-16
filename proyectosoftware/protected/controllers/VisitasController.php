@@ -69,8 +69,9 @@ class VisitasController extends Controller
 		if(isset($_POST['Visitas']))
 		{
 			$model->attributes=$_POST['Visitas'];
+			$model->patientid= Yii::app()->user->id;// Yii::app()->user->getState('fila')->id;
 			$model->zoneid= 4;
-			$model->employeeid=4;
+			$model->employeeid=1;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->visitid));
 		}
