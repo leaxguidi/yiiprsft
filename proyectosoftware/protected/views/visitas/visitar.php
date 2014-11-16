@@ -22,12 +22,9 @@ $this->breadcrumbs=array(
 		'address',
 		'lat',
 		'lon',
-		array('class'=>'bootstrap.widgets.TbButton',
-			array('label'=>'inicio',
-				  'url'=>'google.com')),
-		//array(
-		//	'class'=>'bootstrap.widgets.TbButton',
-        //        array('label'=>'Inicio', 'url'=>array('/site/index'))
-		//),
+		array(
+            'class'=>'bootstrap.widgets.TbButtonColumn',
+            'htmlOptions'=>array('style'=>'width: 50px'),
+        ),
 	),
 )); ?>
