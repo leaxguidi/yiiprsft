@@ -3,7 +3,7 @@
 /* @var $model Usuarios */
 
 $this->menu=array(
-	array('label'=>'Cancelar', 'url'=>array('authebticate')),
+	array('label'=>'Cancelar', 'url'=>array('authenticate')),
 );
 ?>
 

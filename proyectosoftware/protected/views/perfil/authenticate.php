@@ -20,7 +20,7 @@
 	));?>
 	<div class="well">
 		<div class="dialog_input">
-			<input class="span3" 
+			<input class="span2" 
 			type="password" name="Perfil[password]" id="Perfil_password" onkeypress="return pulsar(event)"
 			value="<?php echo $model->password;  ?>" >
 		</div>
