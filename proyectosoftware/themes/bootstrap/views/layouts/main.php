@@ -31,10 +31,10 @@ $USERNAME = (Yii::app()->user->isGuest) ? '' : Yii::app()->user->getState('fila'
                 array('label'=>'Visitar', 'url'=>array('/visitas/visitar')),
                 array('label'=>'Registro', 'url'=>array('/usuarios/create'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Ingresar', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Usuarios', 'url'=>array('/usuarios/admin'), 'visible'=>Yii::app()->user->name === 'admin'),
+                array('label'=>'Usuarios', 'url'=>array('/usuarios/admin'), 'visible'=>Yii::app()->user->name == 'admin'),
                 array('label'=>'Solicitar vitas', 'url'=>array('/visitas/create'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Zonas', 'url'=>array('/zonas/admin'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Perfil', 'url'=>array('/perfil/view'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Perfil', 'url'=>array('/perfil/authenticate'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Salir ('.$USERNAME.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
             ),
         ),
