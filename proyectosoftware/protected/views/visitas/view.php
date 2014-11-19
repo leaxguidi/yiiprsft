@@ -28,15 +28,20 @@ $this->breadcrumbs=array(
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
 	'attributes'=>array(
-		'visitid',
 		'patientid',
+		array(
+			'name'=>'patientid',
+			'value'=>'$data->patient->username',
+		),
 		'zoneid',
+		array(
+			'name'=>'zoneid',
+			'value'=>'$data->zone->name',
+		),
 		'visitdate',
-		'employeeid',
 		'address',
 		'lat',
 		'lon',
-		'visited',
 	),
 )); ?>
 
