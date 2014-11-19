@@ -27,11 +27,11 @@ class VisitasController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','visitar'),
+				'actions'=>array('index','view','visitar','atender'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','visitar'),
+				'actions'=>array('create','update','visitar','atender'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -154,10 +154,20 @@ class VisitasController extends Controller
 	public function actionVisitar()
 	{
 		$model = new Visitas('searchEmployeeID');
-
+		
 		$this->render('visitar',array(
 			'model' => $model,
 		));
+	}
+	
+	public function actionAtender($id)
+	{
+		$model=new Visitas;
+		$model=$this->loadModel($id);
+		$model->visited=1;
+		$model->save();
+		
+		$this->redirect(array('visitar'));
 	}
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
