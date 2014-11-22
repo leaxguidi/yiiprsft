@@ -1,67 +1,12 @@
 <style>
-  html, body, #map-canvas {
+  #map-canvas {
     height: 300px;
     width:300px
     margin: 0px;
     padding: 0px
   }
-  #panel {
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    margin-left: -180px;
-    z-index: 5;
-    background-color: #fff;
-    padding: 5px;
-    border: 1px solid #999;
-  }
 </style>
 
-<?php
-$this->breadcrumbs=array(
-	'Visitar'=>array('visitar'),
-	$model->visitid,
-); ?>
-
-<h1>View Visitas #<?php echo $model->visitid; ?></h1>
-
-<?php $this->widget('bootstrap.widgets.TbDetailView',array(
-	'data'=>$model,
-	'attributes'=>array(
-		'patientid',
-		array(
-			'name'=>'patientid',
-			'value'=>'$data->patient->username',
-		),
-		'zoneid',
-		array(
-			'name'=>'zoneid',
-			'value'=>'$data->zone->name',
-		),
-		'visitdate',
-		'address',
-		'lat',
-		'lon',
-	),
-)); ?>
-
-<?php $this->widget('bootstrap.widgets.TbButton', array(
-    'label'=>'Ver',
-    'type'=>'info', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-    'size'=>'null', // null, 'large', 'small' or 'mini'
-    'htmlOptions'=>array('onClick'=>'calcRoute('.$model->lat.','.$model->lon.')'),
-)); ?>
-
-<?php $this->widget('bootstrap.widgets.TbButton', array(
-    'label'=>'Atender',
-    'type'=>'success',
-    'url'=>array('/visitas/atender','id'=>$model->visitid), // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-    'size'=>'null', // null, 'large', 'small' or 'mini'
-)); ?>
-
-<p id="demo"></p>	
-<div id="map-canvas">
-	
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
 	function showPosition(position) {
@@ -90,6 +35,7 @@ $this->breadcrumbs=array(
   }
 
   function calcRoute(lat, lon) {
+    //var selectedMode = 'DRIVING';
     var selectedMode = 'DRIVING';
     var request = {
         origin: haight,
@@ -109,3 +55,49 @@ $this->breadcrumbs=array(
 
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+<?php
+$this->breadcrumbs=array(
+	'Visitar'=>array('visitar'),
+	$model->visitid,
+); ?>
+
+<h1>View Visitas #<?php echo $model->visitid; ?></h1>
+
+<?php $this->widget('bootstrap.widgets.TbDetailView',array(
+	'data'=>$model,
+	'attributes'=>array(
+		'patientid',
+		//array(
+		//	'name'=>'patientid',
+		//	'value'=>'$data->patient->username',
+		//),
+		'zoneid',
+		//array(
+		//	'name'=>'zoneid',
+		//	'value'=>'$data->zone->name',
+		//),
+		'visitdate',
+		'address',
+		'lat',
+		'lon',
+	),
+)); ?>
+
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+    'label'=>'Ver',
+    'type'=>'info', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+    'size'=>'null', // null, 'large', 'small' or 'mini'
+    'htmlOptions'=>array('onClick'=>'calcRoute('.$model->lat.','.$model->lon.')'),
+)); ?>
+
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+    'label'=>'Atender',
+    'type'=>'success',
+    'url'=>array('/visitas/atender','id'=>$model->visitid), // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+    'size'=>'null', // null, 'large', 'small' or 'mini'
+)); ?>
+
+<p id="demo"></p>	
+<div id="map-canvas">
+	
