@@ -36,6 +36,42 @@ return array(
 			'ipFilters'=>array('127.0.0.1','::1'),			
 		),
 		
+		'rbam'=>array(
+			// RBAM Configuration
+			'applicationLayout'=>'application.views.layouts.main',
+			'authAssignmentsManagerRole'=>' Auth Assignments Manager',
+			'authenticatedRole'=>'Authenticated',
+			'authItemsManagerRole'=>'Auth Items Manager',
+			'baseScriptUrl'=>null,
+			'baseUrl'=>null,
+			'cssFile'=>null,
+			'development'=>true,
+			'exclude'=>'rbam',
+			'guestRole'=>'Guest',
+			'initialise'=>false,
+			'layout'=>'rbam.views.layouts.main',
+			'juiCssFile'=>'jquery-ui.css',
+			'juiHide'=>'puff',
+			'juiScriptFile'=>'jquery-ui.min',
+			'juiScriptUrl'=>null,
+			'juiShow'=>'fade',
+			'juiTheme'=>'base',
+			'juiThemeUrl'=>null,
+			'pageSize'=>10,
+			'rbacManagerRole'=>'RBAC Manager',
+			'relationshipsPageSize'=>5,
+			'showConfirmation'=>5000,
+			'showMenu'=>true,
+			'userClass'=>'Usuarios',
+			'userCriteria'=>array(),
+			'userIdAttribute'=>'id',
+			'userNameAttribute'=>'username',
+			
+			
+			
+			
+		),
+		
 	),
 
 
@@ -92,6 +128,11 @@ return array(
 			'password' => 'Unaj2014',
 			'charset' => 'utf8',
 		),
+		
+		'authManager'=>array(
+            'class'=>'CDbAuthManager',
+            'connectionID'=>'db',
+        ),
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
