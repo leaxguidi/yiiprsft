@@ -36,7 +36,7 @@ class VisitasController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete','visitar'),
-				'users'=>array('admin'),
+				'users'=>array('27738880'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -70,7 +70,12 @@ class VisitasController extends Controller
 		{
 			$model->attributes=$_POST['Visitas'];
 			$model->patientid= Yii::app()->user->id;// Yii::app()->user->getState('fila')->id;
-			$model->zoneid= 4;
+			$aux = Zonas::model()->find(array('select'=>'zoneid', 
+				'condition'=>'lati>:lat1 and lngi>:lng1 and latf<:lat1 and lngf<:lng1', 'params'=>array(':lat1'=>$model->lat,':lng1'=>$model->lon)));
+			if (!is_null($aux))
+				{$model->zoneid= $aux->zoneid;}
+			else
+				{$model->zoneid= 4;}
 			$model->employeeid=1;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->visitid));
