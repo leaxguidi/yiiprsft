@@ -28,12 +28,12 @@ $USERNAME = (Yii::app()->user->isGuest) ? '' : Yii::app()->user->getState('fila'
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
                 array('label'=>'Inicio', 'url'=>array('/site/index')),
-                array('label'=>'Visitar', 'url'=>array('/visitas/visitar'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Visitar', 'url'=>array('/visitas/visitar'), 'visible'=>Yii::app()->user->checkAccess('Visitas!visitador')),
                 array('label'=>'Registro', 'url'=>array('/usuarios/create'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Ingresar', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Usuarios', 'url'=>array('/usuarios/admin'), 'visible'=>Yii::app()->user->name == 'admin'),
-                array('label'=>'Solicitar vitas', 'url'=>array('/visitas/create'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Zonas', 'url'=>array('/zonas/admin'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Usuarios', 'url'=>array('/usuarios/admin'), 'visible'=>Yii::app()->user->checkAccess("RBAC Manager")),
+                array('label'=>'Solicitar visita', 'url'=>array('/visitas/create'), 'visible'=>Yii::app()->user->checkAccess('Visitas:Create!paciente')),
+                array('label'=>'Zonas', 'url'=>array('/zonas/admin'), 'visible'=>Yii::app()->user->checkAccess("RBAC Manager")),
                 array('label'=>'Perfil', 'url'=>array('/perfil/authenticate'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Salir ('.$USERNAME.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
             ),
