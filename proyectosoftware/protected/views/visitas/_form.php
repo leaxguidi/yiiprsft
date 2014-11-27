@@ -3,7 +3,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
+	<p class="help-block">Los campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -14,8 +14,11 @@
 	<!--<?php echo $form->textFieldRow($model,'visitdate',array('class'=>'span5')); ?>-->
 
 	<!--<?php echo $form->textFieldRow($model,'employeeid',array('class'=>'span5','maxlength'=>20)); ?>-->
-
-	<?php echo $form->labelEx($model,'Fecha de visita'); ?>
+     <!--<?php echo $form->labelEx($model,'Fecha de visita') ?>-->
+     <label class="control-label required">
+			Fecha de visita
+			<span class="required">*</span>
+		</label>
 	<?php $form->widget('zii.widgets.jui.CJuiDatePicker',array(
     'name'=>'visitdate', 'model'=>$model, 'attribute'=>'visitdate',
 	'value'=>date('Y-m-d'),
@@ -49,13 +52,13 @@
 	</div>
 	<!--<?php echo $form->textFieldRow($model,'visited',array('class'=>'span5')); ?>-->
 
-	<div class="form-actions">
+	<!--<div class="form-actions">-->
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
 			'label'=>$model->isNewRecord ? 'Create' : 'Save',
 		)); ?>
-	</div>
+	<!--</div>-->
 
 <?php $this->endWidget(); ?>
 <!--======================================================================================================-->
