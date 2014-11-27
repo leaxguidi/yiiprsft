@@ -26,17 +26,24 @@ class VisitasController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
+			/*array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','visitar','atender'),
 				'users'=>array('*'),
-			),
+			),*/
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','visitar','atender'),
-				'users'=>array('@'),
+				'actions'=>array('visitar','atender'),
+				//'users'=>array('@'),
+				'expression'=>'Yii::app()->user->checkAccess("Visitas!visitador")',
+			),
+			array('allow', 
+				'actions'=>array('create'),
+				
+				'expression'=>'Yii::app()->user->checkAccess("Visitas:Create!paciente")',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','visitar'),
-				'users'=>array('27738880'),
+				'actions'=>array('admin','delete','update','index'),
+				//'users'=>array('27738880'),
+				'expression'=>'Yii::app()->user->checkAccess("RBAC Manager")',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
