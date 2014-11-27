@@ -77,7 +77,7 @@ class UsuariosController extends Controller
 	public function actionCreate()
 	{
 		$model=new Usuarios;
-
+		
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
@@ -96,6 +96,7 @@ class UsuariosController extends Controller
 					$subject = 'Confirmar registro en ' . Yii::app()->name;
 					$mensaje = $model->get_mensaje_activar_cuenta(
 								$model->username, $model->id, $model->account_verification_code);
+					Yii::app()->authManager->assign('B7f8d198!paciente',$model->id);
 					Email::enviar($model->email, $subject, $mensaje);
 					
 					//~ se muestra un mensaje flash al usuario
